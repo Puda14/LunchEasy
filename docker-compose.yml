@@ -27,3 +27,21 @@ services:
     environment:
       - NODE_ENV=development
       - MONGO_URI=<YOUR_MONGO_URI>
+      - MONGO_URI=mongodb://mongo:27017/magi
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=admin123
+      - MONGO_INITDB_DATABASE=magi
+
+volumes:
+  mongo-data:
