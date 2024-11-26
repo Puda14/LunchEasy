@@ -7,22 +7,13 @@ import Sidebar from "./components/Sidebar";
 function App() {
   return (
     <BrowserRouter>
-      <div className="d-flex">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-2 sidebar">
-              <Sidebar />
-            </div>
-
-            <div className="col-10">
-              <Routes>
-                <Route path="/" element={<pages.Home />} />
-                <Route path="/login" element={<pages.Login />} />
-              </Routes>
-            </div>
-          </div>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/login" element={<pages.Login />} />
+        <Route path="" element={<Sidebar />}>
+          <Route path="/" element={<pages.Home />} />
+          {/* <Route path="/test" element={<pages.Login />} /> */}
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
