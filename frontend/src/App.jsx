@@ -11,14 +11,14 @@ function App() {
         <div className="container-fluid">
           <div className="row">
             <div className="col-2 sidebar">
-              <Sidebar/>
+              <Sidebar />
             </div>
 
             <div className="col-10">
-            <Routes>
-              <Route path="/" element={<pages.Home />} />
-              <Route path="/login" element={<pages.Login />} />
-            </Routes>
+              <Routes>
+                <Route path="/" element={<pages.Home />} />
+                <Route path="/login" element={<pages.Login />} />
+              </Routes>
             </div>
           </div>
         </div>

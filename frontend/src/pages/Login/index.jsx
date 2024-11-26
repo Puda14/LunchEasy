@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import { useState } from "react";
 const LandingButton = ({ text, onClick }) => {
   return (
@@ -64,22 +62,14 @@ const Login = () => {
             type="password"
             onChange={handlePasswordChange}
           />
-          <div className="flex flex-row items-center self-end gap-4 m-2">
+          <div className="flex flex-row items-center self-end gap-4 m-2 select-none">
             <label htmlFor="remember-checkbox">パスワードを保存する</label>
             <input
               type="checkbox"
               id="remember-checkbox"
-              value=""
+              checked={remember}
               className="w-5 h-5 border border-orange-900 rounded-md appearance-none checked:bg-orange-600 checked:border-transparent hover:cursor-pointer hover:bg-orange-300 hover:checked:bg-orange-400"
               onChange={handleRememberChange}
-              // style={{
-              //   backgroundImage: remember ? "url(/check-mark.svg)" : "none",
-              //   backgroundSize: "contain",
-              //   backgroundRepeat: "no-repeat",
-              //   backgroundPosition: "center",
-              //   backgroundBlendMode: "multiply",
-              //   filter: remember ? "invert(1)" : "none",
-              // }}
             ></input>
           </div>
           <LandingButton text="ログイン" onClick={handleLogin} />
