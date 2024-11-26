@@ -2,6 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { useLocation, Outlet } from "react-router-dom";
 
+
 const Sidebar = () => {
   const location = useLocation();
 
@@ -75,7 +76,7 @@ const Sidebar = () => {
             className="rounded-circle"
             style={{ width: "50px", height: "50px", objectFit: "cover" }}
           />
-          <p className="mb-0 ms-2">User 1</p>
+          <p className="mb-0 ms-2">ユーザー1</p>
         </div>
       </div>
 
