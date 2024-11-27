@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 const NavigatorSquare = ({ name, route }) => {
     const formattedName = name.replace(/\s+/g, '');
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full h-full">
             <a href={`${route}`} className="no-underline text-center">
-                <img src={`/navigators/${formattedName}.png`} alt={name} className="navigator-image" />
+                <img src={`/navigators/${formattedName}.png`} alt={name} className="w-full h-full" />
                 <p className="normal-case mt-3 text-black">{name}</p>
             </a>
         </div>
