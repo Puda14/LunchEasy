@@ -21,7 +21,7 @@ const Login = () => {
   };
   const handleSignup = () => {};
   return (
-    <div className="grid w-screen h-screen grid-cols-2 grid-rows-1">
+    <div className="grid w-screen h-screen grid-cols-2">
       <div className="relative w-full h-screen bg-red-500">
         <img
           src="/login_landing.jpg"
