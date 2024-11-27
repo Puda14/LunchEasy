@@ -1,6 +1,7 @@
 import { useState } from "react";
-import LandingButton from "./components/LandingButton";
-import InputField from "./components/InputField";
+import LandingButton from "../../components/LandingButton";
+import InputField from "../../components/InputField";
+import CheckBox from "../../components/CheckBox";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,16 +42,7 @@ const Login = () => {
             type="password"
             onChange={handlePasswordChange}
           />
-          <div className="flex flex-row items-center self-end gap-4 m-2 select-none">
-            <label htmlFor="remember-checkbox">パスワードを保存する</label>
-            <input
-              type="checkbox"
-              id="remember-checkbox"
-              checked={remember}
-              className="w-5 h-5 appearance-none border-1 border-orange-900 rounded-md  checked:bg-orange-600 hover:cursor-pointer hover:bg-orange-100 hover:checked:bg-orange-400"
-              onChange={handleRememberChange}
-            ></input>
-          </div>
+          <CheckBox id="remember-checkbox" text="パスワードを保存する" onChange={handleRememberChange} />
           <LandingButton text="ログイン" onClick={handleLogin} />
           <LandingButton text="サインアップ" />
         </div>

@@ -4,7 +4,7 @@ const InputField = ({ label, type, onChange }) => {
         <div className="self-start text-xl font-semibold">{label}</div>
         <input
           type={type}
-          className="w-full p-4 my-2 text-2xl border border-gray-500 rounded-xl"
+          className="w-full p-2 my-2 text-2xl border border-gray-500 rounded-xl"
           onChange={onChange}
         ></input>
       </div>
