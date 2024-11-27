@@ -18,10 +18,14 @@ const Login = () => {
   const handleLogin = () => {
     //TODO: Implement login logic
     alert(`Email: ${email} Password: ${password} Remember: ${remember}`);
+    // Navigate to home page
+    window.location.href = "/";
   };
-  const handleSignup = () => {};
+  const handleSignup = () => {
+    // <Navigate to="/signup" />
+  };
   return (
-    <div className="grid w-screen h-screen grid-cols-2 grid-rows-1">
+    <div className="grid w-screen h-screen grid-cols-2">
       <div className="relative w-full h-screen bg-red-500">
         <img
           src="/login_landing.jpg"
