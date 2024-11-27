@@ -1,27 +1,6 @@
 import { useState } from "react";
-const LandingButton = ({ text, onClick }) => {
-  return (
-    <button
-      className={`w-full p-2 m-2 text-2xl text-white bg-orange-700 rounded-xl hover:bg-orange-800`}
-      onClick={onClick}
-    >
-      {text}
-    </button>
-  );
-};
-
-const InputField = ({ label, type, onChange }) => {
-  return (
-    <div className="w-full my-2 h-fit">
-      <div className="self-start text-xl font-semibold">{label}</div>
-      <input
-        type={type}
-        className="w-full p-4 my-2 text-2xl border border-gray-500 rounded-xl"
-        onChange={onChange}
-      ></input>
-    </div>
-  );
-};
+import LandingButton from "./components/LandingButton";
+import InputField from "./components/InputField";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -68,7 +47,7 @@ const Login = () => {
               type="checkbox"
               id="remember-checkbox"
               checked={remember}
-              className="w-5 h-5 border border-orange-900 rounded-md appearance-none checked:bg-orange-600 checked:border-transparent hover:cursor-pointer hover:bg-orange-300 hover:checked:bg-orange-400"
+              className="w-5 h-5 appearance-none border-1 border-orange-900 rounded-md  checked:bg-orange-600 hover:cursor-pointer hover:bg-orange-100 hover:checked:bg-orange-400"
               onChange={handleRememberChange}
             ></input>
           </div>
