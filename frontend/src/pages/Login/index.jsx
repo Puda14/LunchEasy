@@ -43,6 +43,7 @@ const Login = () => {
             onChange={handlePasswordChange}
           />
           <CheckBox id="remember-checkbox" text="パスワードを保存する" onChange={handleRememberChange} />
+
           <LandingButton text="ログイン" onClick={handleLogin} />
           <LandingButton text="サインアップ" />
         </div>
