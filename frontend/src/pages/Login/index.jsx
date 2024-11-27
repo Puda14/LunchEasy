@@ -2,6 +2,7 @@ import { useState } from "react";
 import LandingButton from "../../components/LandingButton";
 import InputField from "../../components/InputField";
 import CheckBox from "../../components/CheckBox";
+import {Navigate} from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,8 +19,11 @@ const Login = () => {
   const handleLogin = () => {
     //TODO: Implement login logic
     alert(`Email: ${email} Password: ${password} Remember: ${remember}`);
+    <Navigate to="/home" />
   };
-  const handleSignup = () => {};
+  const handleSignup = () => {
+    // <Navigate to="/signup" />
+  };
   return (
     <div className="grid w-screen h-screen grid-cols-2">
       <div className="relative w-full h-screen bg-red-500">
