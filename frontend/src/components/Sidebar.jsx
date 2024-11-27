@@ -62,7 +62,7 @@ const Sidebar = () => {
     ),
   };
   return (
-    <div className="top-0 bottom-0 left-0 w-1/6 d-flex flex-column justify-content-between sidebar">
+    <div className="top-0 bottom-0 left-0 w-60 min-w-60 max-w-60 d-flex flex-column justify-content-between sidebar">
       <div className="items-center text-center">
       <div className="mt-2 d-flex justify-content-center align-items-center">
         <img
