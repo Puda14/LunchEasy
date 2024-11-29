@@ -1,0 +1,93 @@
+@import url('../bootstrap/css/bootstrap.min.css');
+/* Tổng thể Sidebar */
+.sidebar {
+    background-color: #dcd596;
+    padding: 1rem 0;
+    border-right: 1px solid #ddd; /* Đường viền ngăn cách */
+}
+ 
+.sidebar img {
+    object-fit: cover;
+}
+  
+.sidebar .items-center .status img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+  
+.sidebar .items-center .status p {
+    margin-left: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+  
+/* Phần hiển thị icon và title */
+.sidebar .text-center {
+    text-align: center;
+    margin-top: 1rem;
+}
+  
+.sidebar .text-center .p-3 {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+}
+  
+  .sidebar .text-center .p-3:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .sidebar .text-center p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  /* Logout button */
+  .sidebar .logout button {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar .logout button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      flex-direction: row;
+      padding: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+  
+    .sidebar .text-center {
+      margin-top: 0;
+    }
+  
+    .sidebar .logout {
+      margin-top: 0;
+    }
+  
+    .sidebar .items-center img:first-child {
+      width: 60px;
+      height: 60px;
+    }
+  
+    .sidebar .text-center .p-3 {
+      padding: 0.5rem;
+    }
+  }  
