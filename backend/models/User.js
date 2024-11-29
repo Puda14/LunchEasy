@@ -9,8 +9,6 @@ const UserSchema = new mongoose.Schema(
     phone: { type: String },
     avatar: { type: String }, // URL of the user avatar
     address: { type: String },
-    created_at: { type: Date, default: Date.now },
-    updated_at: { type: Date, default: Date.now }
   },
   { timestamps: true } // Automatically adds createdAt and updatedAt fields
 );
