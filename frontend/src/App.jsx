@@ -12,6 +12,9 @@ function App() {
         <Route path="/signup" element={<pages.Signup />} />
         <Route path="/" element={<pages.Home />} />
         <Route path="/recommendation" element={<pages.Recommendation />} />
+        <Route path="/test">
+          <Route path="/test/restaurant" element={<pages.Restaurant />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

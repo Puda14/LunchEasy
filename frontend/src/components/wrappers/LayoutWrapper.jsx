@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../Sidebar";
-const LayoutWrapper = ({ element, title = "ランチイージー" }) => {
+const LayoutWrapper = ({ element }) => {
+  const title = "ランチイージー";
   return (
     <div className="flex flex-row w-screen h-screen">
       <Sidebar />
