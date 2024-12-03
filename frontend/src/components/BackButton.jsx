@@ -13,7 +13,7 @@ const BackButton = () => {
       onClick={handleBackClick}
       className="w-full h-full bg-transparent border-0 cursor-pointer"
     >
-      <FaArrowLeft className="w-full h-full" />
+      <FaArrowLeft className="w-full h-full text-orange-700" />
     </button>
   );
 };
