@@ -2,10 +2,10 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
-const BackButton = () => {
+const BackButton = ({ dest = "none" }) => {
   const navigate = useNavigate();
   const handleBackClick = () => {
-    navigate(-1);
+    navigate(dest === "none" ? -1 : dest);
   };
 
   return (
