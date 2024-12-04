@@ -21,7 +21,7 @@ const Signup = () => {
       element={
         <div className="flex flex-col items-center justify-center w-1/2 h-full">
           <div className="self-start w-1/12 h-auto mb-14">
-            <BackButton />
+            <BackButton dest="/login" />
           </div>
           <InputField
             label="生年月日"
