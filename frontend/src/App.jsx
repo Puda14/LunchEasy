@@ -7,43 +7,17 @@ import LandingPageWrapper from "./components/wrappers/LandingPageWrapper";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/guest"
-          element={
-            <LandingPageWrapper
-              element={
-                <Routes>
-                  <Route path="/guest/login" element={<pages.Login />} />
-                  <Route path="/guest/signup" element={<pages.Signup />} />
-                </Routes>
-              }
-            />
-          }
-        />
-        <Route
-          path="/"
-          element={
-            <LayoutWrapper
-              element={
-                <Routes>
-                  <Route path="/" element={<pages.Home />} />
-                  <Route
-                    path="/recommendation"
-                    element={<pages.Recommendation />}
-                  />
-                  <Route path="/test">
-                    <Route
-                      path="/test/restaurant"
-                      element={<pages.Restaurant />}
-                    />
-                  </Route>
-                </Routes>
-              }
-            />
-          }
-        />
-      </Routes>
+    <Routes>
+      <Route path="/login" element={<LandingPageWrapper element={<pages.Login />} />} />
+      <Route path="/signup" element={<LandingPageWrapper element={<pages.Signup />} />} />
+      <Route path="/*" element={<LayoutWrapper element={<Routes>
+        <Route path="/" element={<pages.Home />} />
+        <Route path="/recommendation" element={<pages.Recommendation />} />
+        <Route path="/test">
+          <Route path="/test/restaurant" element={<pages.Restaurant />} />
+        </Route>
+      </Routes>} />} />
+    </Routes>
     </BrowserRouter>
   );
 }
