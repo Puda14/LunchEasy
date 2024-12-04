@@ -20,7 +20,7 @@ const Signup = () => {
     <LandingPageWrapper
       element={
         <div className="flex flex-col items-center justify-center w-1/2 h-full">
-          <div className="self-start w-10 h-auto mb-14">
+          <div className="self-start w-1/12 h-auto mb-14">
             <BackButton />
           </div>
           <InputField
