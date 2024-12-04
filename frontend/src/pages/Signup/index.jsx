@@ -17,32 +17,28 @@ const Signup = () => {
     navigate("/");
   };
   return (
-    <LandingPageWrapper
-      element={
-        <div className="flex flex-col items-center justify-center w-1/2 h-full">
-          <div className="self-start w-1/12 h-auto mb-14">
-            <BackButton dest="/login" />
-          </div>
-          <InputField
-            label="生年月日"
-            type="date"
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-          <InputField
-            label="ログインメールアドレス"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <InputField
-            label="パスワード"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {/* <CheckBox id="remember-checkbox" text="パスワードを保存する" /> */}
-          <LandingButton text="サインアップ" onClick={handleSignup} />
-        </div>
-      }
-    />
+    <div className="flex flex-col items-center justify-center w-1/2 h-full">
+      <div className="self-start w-1/12 h-auto mb-14">
+        <BackButton dest="/login" />
+      </div>
+      <InputField
+        label="生年月日"
+        type="date"
+        onChange={(e) => setBirthday(e.target.value)}
+      />
+      <InputField
+        label="ログインメールアドレス"
+        type="text"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <InputField
+        label="パスワード"
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      {/* <CheckBox id="remember-checkbox" text="パスワードを保存する" /> */}
+      <LandingButton text="サインアップ" onClick={handleSignup} />
+    </div>
   );
 };
 
