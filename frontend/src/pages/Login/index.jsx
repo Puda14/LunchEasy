@@ -16,36 +16,32 @@ const Login = () => {
     navigate("/");
   };
   return (
-    <LandingPageWrapper
-      element={
-        <div className="flex flex-col items-center justify-center w-1/2 h-full">
-          <div className="mb-20 text-5xl font-bold">ランチイージー</div>
-          <InputField
-            label="ログインメールアドレス"
-            type="text"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <InputField
-            label="パスワード"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <CheckBox
-            id="remember-checkbox"
-            text="パスワードを保存する"
-            onChange={() => setRemember(!remember)}
-          />
+    <div className="flex flex-col items-center justify-center w-1/2 h-full">
+      <div className="mb-20 text-5xl font-bold">ランチイージー</div>
+      <InputField
+        label="ログインメールアドレス"
+        type="text"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      <InputField
+        label="パスワード"
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <CheckBox
+        id="remember-checkbox"
+        text="パスワードを保存する"
+        onChange={() => setRemember(!remember)}
+      />
 
-          <LandingButton text="ログイン" onClick={handleLogin} />
-          <LandingButton
-            text="サインアップ"
-            onClick={() => {
-              window.location.href = "/signup";
-            }}
-          />
-        </div>
-      }
-    />
+      <LandingButton text="ログイン" onClick={handleLogin} />
+      <LandingButton
+        text="サインアップ"
+        onClick={() => {
+          window.location.href = "/signup";
+        }}
+      />
+    </div>
   );
 };
 
