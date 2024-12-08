@@ -6,7 +6,7 @@ const Home = () => {
         <NavigatorSquare name="おすすめ" route="/recommendation" />
         <NavigatorSquare name="レストラン" route="#" />
         <NavigatorSquare name="歴史" route="#" />
-        <NavigatorSquare name="お気に入り" route="#" />
+        <NavigatorSquare name="お気に入り" route="/favorite" />
         <NavigatorSquare name="設定" route="#" />
         <NavigatorSquare name="健康的なお勧め" route="#" />
       </div>

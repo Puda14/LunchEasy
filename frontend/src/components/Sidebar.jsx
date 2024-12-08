@@ -84,7 +84,7 @@ const Sidebar = () => {
 
       {/* Home Icon */}
       <div className="text-center d-flex flex-column align-items-center gap-3">
-        <div className="p-3 border d-flex sidebar-icon justify-content-center align-items-center">{currentPage.icon}</div>
+        <div className="p-3 w-28 h-28 border d-flex sidebar-icon justify-content-center align-items-center">{currentPage.icon}</div>
         <p className="mt-2">{currentPage.title}</p>
       </div>
 
