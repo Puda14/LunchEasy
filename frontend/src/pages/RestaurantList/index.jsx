@@ -61,7 +61,7 @@ const RestaurantList = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center my-4">Favorite Dishes</h1>
+      <h1 className="text-3xl font-bold text-center my-4">レストラン検索</h1>
       <table className="min-w-full table-auto border-collapse mt-4">
         <thead>
           <tr>
@@ -71,7 +71,7 @@ const RestaurantList = () => {
               onClick={() => handleSort("name")}
             >
               <div className="flex items-center">
-                Name
+                レストラン名
                 {sortConfig.key === "name" &&
                   sortConfig.direction === "asc" && (
                     <FaArrowUp className=" text-gray-500" />
@@ -87,7 +87,7 @@ const RestaurantList = () => {
               onClick={() => handleSort("rating")}
             >
               <div className="flex items-center">
-                Rating
+                評価する
                 {sortConfig.key === "rating" &&
                   sortConfig.direction === "asc" && (
                     <FaArrowUp className=" text-gray-500" />
@@ -103,7 +103,7 @@ const RestaurantList = () => {
               onClick={() => handleSort("distance")}
             >
               <div className="flex items-center">
-                Distance (km)
+                半程範圖 (km)
                 {sortConfig.key === "distance" &&
                   sortConfig.direction === "asc" && (
                     <FaArrowUp className=" text-gray-500" />

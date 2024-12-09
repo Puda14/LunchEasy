@@ -32,6 +32,7 @@ function App() {
                     path="/restaurants"
                     element={<pages.RestaurantList />}
                   />
+                  <Route path="/settings" element={<pages.Settings />} />
                   <Route path="/test">
                     <Route
                       path="/test/restaurant"
