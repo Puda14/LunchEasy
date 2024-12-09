@@ -5,5 +5,6 @@ import Recommendation from "./Recommendation/index.jsx";
 import Signup from "./Signup/index.jsx";
 import Favorite from "./Favorite/index.jsx";
 import RestaurantList from "./RestaurantList/index.jsx";
+import Settings from "./Settings/index.jsx";
 
-export default { Home, Login, Restaurant, Recommendation, Signup, Favorite, RestaurantList };
+export default { Home, Login, Restaurant, Recommendation, Signup, Favorite, RestaurantList, Settings };
