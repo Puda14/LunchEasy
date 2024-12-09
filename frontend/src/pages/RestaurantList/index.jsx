@@ -1,36 +1,11 @@
 import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
+import initialData from "../../test/restaurants.json";
 const RestaurantList = () => {
-  const initialData = [
-    {
-      name: "Pizza Place",
-      distance: 1.2,
-      rating: 4.5,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Burger Town",
-      distance: 2.5,
-      rating: 4.7,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Sushi World",
-      distance: 0.5,
-      rating: 4.8,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Pasta Corner",
-      distance: 3.1,
-      rating: 3.9,
-      imageUrl: "/meal/restaurant.png",
-    },
-  ];
-
   const [restaurants, setRestaurants] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const navigate = useNavigate();
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -52,65 +27,65 @@ const RestaurantList = () => {
     setRestaurants(sortedData);
   };
 
-  const handleRowClick = (restaurantName) => {
-    // Logic Solving...
-    //
-    //
-    console.log("Clicked on:", restaurantName);
+  const handleRowClick = (restaurant) => {
+    // convert name to lowercase and replace space with dash
+    const id = restaurant.name.toLowerCase().replace(/ /g, "-");
+    navigate(`/restaurants/${id}`);
+    console.log("Clicked on:", id);
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center my-4">レストラン検索</h1>
-      <table className="min-w-full table-auto border-collapse mt-4">
+    <div className="container p-4 mx-auto">
+      <h1 className="my-4 text-3xl font-bold text-center">レストラン検索</h1>
+      <table className="min-w-full mt-4 border-collapse table-auto">
         <thead>
           <tr>
             <th className="p-2 border-b"></th>
             <th
-              className="cursor-pointer p-2 border-b text-left"
+              className="p-2 text-left border-b cursor-pointer"
               onClick={() => handleSort("name")}
             >
               <div className="flex items-center">
                 レストラン名
                 {sortConfig.key === "name" &&
                   sortConfig.direction === "asc" && (
-                    <FaArrowUp className=" text-gray-500" />
+                    <FaArrowUp className="text-gray-500 " />
                   )}
                 {sortConfig.key === "name" &&
                   sortConfig.direction === "desc" && (
-                    <FaArrowDown className=" text-gray-500" />
+                    <FaArrowDown className="text-gray-500 " />
                   )}
               </div>
             </th>
             <th
-              className="cursor-pointer p-2 border-b text-left"
+              className="p-2 text-left border-b cursor-pointer"
               onClick={() => handleSort("rating")}
             >
               <div className="flex items-center">
                 評価する
                 {sortConfig.key === "rating" &&
                   sortConfig.direction === "asc" && (
-                    <FaArrowUp className=" text-gray-500" />
+                    <FaArrowUp className="text-gray-500 " />
                   )}
                 {sortConfig.key === "rating" &&
                   sortConfig.direction === "desc" && (
-                    <FaArrowDown className=" text-gray-500" />
+                    <FaArrowDown className="text-gray-500 " />
                   )}
               </div>
             </th>
             <th
-              className="cursor-pointer p-2 border-b text-left"
+              className="p-2 text-left border-b cursor-pointer"
               onClick={() => handleSort("distance")}
             >
               <div className="flex items-center">
                 半程範圖 (km)
                 {sortConfig.key === "distance" &&
                   sortConfig.direction === "asc" && (
-                    <FaArrowUp className=" text-gray-500" />
+                    <FaArrowUp className="text-gray-500 " />
                   )}
                 {sortConfig.key === "distance" &&
                   sortConfig.direction === "desc" && (
-                    <FaArrowDown className=" text-gray-500" />
+                    <FaArrowDown className="text-gray-500 " />
                   )}
               </div>
             </th>
@@ -121,13 +96,13 @@ const RestaurantList = () => {
             <tr
               key={index}
               className="border-b cursor-pointer hover:bg-gray-100"
-              onClick={() => handleRowClick(restaurant.name)}
+              onClick={() => handleRowClick(restaurant)}
             >
               <td className="p-2">
                 <img
                   src={restaurant.imageUrl}
                   alt={restaurant.name}
-                  className="w-16 h-16 object-cover rounded-md"
+                  className="object-cover w-16 h-16 rounded-md"
                 />
               </td>
               <td className="p-2">{restaurant.name}</td>

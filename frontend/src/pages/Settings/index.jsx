@@ -23,10 +23,10 @@ const Settings = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center my-4">設定</h1>
+    <div className="container p-4 mx-auto">
+      <h1 className="my-4 text-3xl font-bold text-center">設定</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-700">
@@ -36,7 +36,7 @@ const Settings = () => {
               type="text"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
 
@@ -48,7 +48,7 @@ const Settings = () => {
               type="date"
               value={birthDate}
               onChange={(e) => setBirthDate(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
 
@@ -60,7 +60,7 @@ const Settings = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ const Settings = () => {
               type="tel"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
 
@@ -86,7 +86,7 @@ const Settings = () => {
               type="text"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             />
           </div>
 
@@ -97,7 +97,7 @@ const Settings = () => {
             <select
               value={theme}
               onChange={(e) => setTheme(e.target.value)}
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm"
+              className="block w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm"
             >
               <option value="ライトモード">ライトモード</option>
               <option value="ダークモード">ダークモード</option>
@@ -109,7 +109,7 @@ const Settings = () => {
       <div className="flex justify-end mt-6">
         <button
           onClick={handleUpdate}
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="px-4 py-2 text-white bg-blue-500 rounded-md"
         >
           アップデート
         </button>

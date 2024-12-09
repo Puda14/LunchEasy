@@ -32,13 +32,12 @@ function App() {
                     path="/restaurants"
                     element={<pages.RestaurantList />}
                   />
+                  <Route
+                    path="/restaurants/:id"
+                    element={<pages.Restaurant />}
+                  />
                   <Route path="/settings" element={<pages.Settings />} />
-                  <Route path="/test">
-                    <Route
-                      path="/test/restaurant"
-                      element={<pages.Restaurant />}
-                    />
-                  </Route>
+                  <Route path="/test"></Route>
                 </Routes>
               }
             />
