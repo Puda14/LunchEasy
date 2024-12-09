@@ -44,6 +44,7 @@ const swaggerDefinition = {
           price: { type: 'number', format: 'float', description: 'Price of the dish' },
           restaurant_id: { type: 'string', description: 'ID of the restaurant serving this dish' },
           images: { type: 'array', items: { type: 'string', format: 'uri' }, description: 'Image URLs' },
+          description: { type: 'string', description: 'Description of the dish'}
         },
       },
       // Định nghĩa Schema cho Restaurant

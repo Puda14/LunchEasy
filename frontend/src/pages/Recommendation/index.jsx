@@ -7,7 +7,6 @@ import Sidebar from "../../components/Sidebar";
 const Recommendation = () => {
   return (
     <div className="flex flex-row">
-      <HomeButton />
       <div style={{ position: "absolute", top: 0, right: 0 }}>
         <SearchBar />
       </div>

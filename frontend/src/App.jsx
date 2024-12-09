@@ -7,18 +7,44 @@ import LandingPageWrapper from "./components/wrappers/LandingPageWrapper";
 function App() {
   return (
     <BrowserRouter>
-    <Routes>
-      <Route path="/login" element={<LandingPageWrapper element={<pages.Login />} />} />
-      <Route path="/signup" element={<LandingPageWrapper element={<pages.Signup />} />} />
-      <Route path="/*" element={<LayoutWrapper element={<Routes>
-        <Route path="/" element={<pages.Home />} />
-        <Route path="/recommendation" element={<pages.Recommendation />} />
-        <Route path="/settings" element={<pages.Settings />} />
-        <Route path="/test">
-          <Route path="/test/restaurant" element={<pages.Restaurant />} />
-        </Route>
-      </Routes>} />} />
-    </Routes>
+      <Routes>
+        <Route
+          path="/login"
+          element={<LandingPageWrapper element={<pages.Login />} />}
+        />
+        <Route
+          path="/signup"
+          element={<LandingPageWrapper element={<pages.Signup />} />}
+        />
+        <Route
+          path="/*"
+          element={
+            <LayoutWrapper
+              element={
+                <Routes>
+                  <Route path="/" element={<pages.Home />} />
+                  <Route
+                    path="/recommendation"
+                    element={<pages.Recommendation />}
+                  />
+                  <Route path="/favorite" element={<pages.Favorite />} />
+                  <Route
+                    path="/restaurants"
+                    element={<pages.RestaurantList />}
+                  />
+                  <Route path="/settings" element={<pages.Settings />} />
+                  <Route path="/test">
+                    <Route
+                      path="/test/restaurant"
+                      element={<pages.Restaurant />}
+                    />
+                  </Route>
+                </Routes>
+              }
+            />
+          }
+        />
+      </Routes>
     </BrowserRouter>
   );
 }
