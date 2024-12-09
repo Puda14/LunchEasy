@@ -1,36 +1,11 @@
 import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
+import initialData from "../../test/restaurants.json";
 const RestaurantList = () => {
-  const initialData = [
-    {
-      name: "Pizza Place",
-      distance: 1.2,
-      rating: 4.5,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Burger Town",
-      distance: 2.5,
-      rating: 4.7,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Sushi World",
-      distance: 0.5,
-      rating: 4.8,
-      imageUrl: "/meal/restaurant.png",
-    },
-    {
-      name: "Pasta Corner",
-      distance: 3.1,
-      rating: 3.9,
-      imageUrl: "/meal/restaurant.png",
-    },
-  ];
-
   const [restaurants, setRestaurants] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const navigate = useNavigate();
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -53,10 +28,10 @@ const RestaurantList = () => {
   };
 
   const handleRowClick = (restaurant) => {
-    // Logic Solving...
-    //
-    //
-    console.log("Clicked on:", restaurant.name);
+    // convert name to lowercase and replace space with dash
+    const id = restaurant.name.toLowerCase().replace(/ /g, "-");
+    navigate(`/restaurants/${id}`);
+    console.log("Clicked on:", id);
   };
 
   return (
