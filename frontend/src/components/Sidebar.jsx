@@ -82,14 +82,8 @@ const Sidebar = () => {
       </div>
 
       {/* Home Icon */}
-      <div className="text-center d-flex flex-column align-items-center gap-3">
-<<<<<<< HEAD
-        <div className="p-3 border d-flex sidebar-icon justify-content-center align-items-center">
-          {currentPage.icon}
-        </div>
-=======
-        <div className="p-3 w-28 h-28 border d-flex sidebar-icon justify-content-center align-items-center">{currentPage.icon}</div>
->>>>>>> f3dc8d317e168c5070f28666d490e0d397f3d399
+      <div className="gap-3 text-center d-flex flex-column align-items-center">
+        <div className="p-3 border w-28 h-28 d-flex sidebar-icon justify-content-center align-items-center">{currentPage.icon}</div>
         <p className="mt-2">{currentPage.title}</p>
       </div>
 
