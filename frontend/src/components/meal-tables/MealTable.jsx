@@ -28,7 +28,7 @@ const MealTable = ({ meals }) => {
   };
 
   return (
-    <table className="text-center text-3xl">
+    <table className="text-center">
       <thead>
         <tr>
           <th>料理</th>
