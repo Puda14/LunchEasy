@@ -15,13 +15,13 @@ const MealRow = ({ meal, price, reviews, cookingTime, address }) => {
 
   return (
     <tr>
-      <td className="text-left p-2">
+      <td className="text-left p-4">
         <img className="w-24 rounded-lg" src={`/meal/${meal}.png`} alt={`${meal}`} />
       </td>
-      <td className="p-2">{price}$</td>
-      <td className="p-2">{renderStars(reviews)}</td>
-      <td className="p-2">{cookingTime}</td>
-      <td className="p-2">{address}</td>
+      <td className="p-4">{price}$</td>
+      <td className="p-4">{renderStars(reviews)}</td>
+      <td className="p-4">{cookingTime}</td>
+      <td className="p-4">{address}</td>
     </tr>
   );
 };
