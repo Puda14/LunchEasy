@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 const Information = ({label, text}) => {
     return (
-        <div className="flex flex-row text-3xl">
+        <div className="flex flex-row text-xl">
             <p className="font-semibold mr-8">{label}</p>
             {Array.isArray(text) ? (
                 <div>
