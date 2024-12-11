@@ -10,7 +10,7 @@ const Restaurant = () => {
   return (
     <div className="relative flex flex-col w-full h-full">
       <div className="absolute w-10 h-auto top-5 left-5">
-        <BackButton dest="/" />
+        <BackButton dest="/restaurants" />
       </div>
 
       <div className="flex flex-col w-full h-full pt-20 pl-20 pr-20 text-2xl">
