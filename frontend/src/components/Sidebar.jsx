@@ -5,42 +5,68 @@ import { useLocation, Outlet, useNavigate } from "react-router-dom";
 const Sidebar = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const defaultIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-house"
+      viewBox="0 0 16 16"
+    >
+      <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+    </svg>
+  );
+  const loginIcon = (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      fill="currentColor"
+      className="bi bi-person-circle"
+      viewBox="0 0 16 16"
+    >
+      <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+      <path
+        fillRule="evenodd"
+        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 1 0 0 14A7 7 0 0 0 8 1z"
+      />
+    </svg>
+  );
   // Mapping đường dẫn -> nội dung Sidebar
   const pageContent = {
     "/": {
       title: "ホーム",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          className="bi bi-house"
-          viewBox="0 0 16 16"
-        >
-          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-        </svg>
-      ),
+      icon: defaultIcon,
     },
     "/login": {
       title: "ログイン",
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="16"
-          height="16"
-          fill="currentColor"
-          className="bi bi-person-circle"
-          viewBox="0 0 16 16"
-        >
-          <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-          <path
-            fillRule="evenodd"
-            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 1 0 0 14A7 7 0 0 0 8 1z"
-          />
-        </svg>
-      ),
+      icon: loginIcon,
     },
+    "/food": {
+      title: "食べ物",
+      icon: defaultIcon,
+    },
+    "/restaurants": {
+      title: "レストラン",
+      icon: defaultIcon,
+    },
+    "/settings": {
+      title: "設定",
+      icon: defaultIcon,
+    },
+    "/recommendation": {
+      title: "おすすめ",
+      icon: defaultIcon,
+    },
+    "/history": {
+      title: "履歴",
+      icon: defaultIcon,
+    },
+    "/favorite": {
+      title: "お気に入り",
+      icon: defaultIcon,
+    }
     // Thêm các đường dẫn khác tại đây
   };
 
@@ -83,7 +109,9 @@ const Sidebar = () => {
 
       {/* Home Icon */}
       <div className="gap-3 text-center d-flex flex-column align-items-center">
-        <div className="p-3 border w-28 h-28 d-flex sidebar-icon justify-content-center align-items-center">{currentPage.icon}</div>
+        <div className="p-3 border w-28 h-28 d-flex sidebar-icon justify-content-center align-items-center">
+          {currentPage.icon}
+        </div>
         <p className="mt-2">{currentPage.title}</p>
       </div>
 
