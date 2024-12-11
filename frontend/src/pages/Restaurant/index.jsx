@@ -1,7 +1,9 @@
 import { use } from "react";
 import BackButton from "../../components/BackButton";
 import { useParams } from "react-router-dom";
-import initialData from "../../test/restaurants.json";
+import initialData from "../../data/restaurants.json";
+import DishItem from "../../components/DishItem";
+
 const Restaurant = () => {
   const id = useParams().id;
   const restaurant = initialData.find(
@@ -49,9 +51,9 @@ const Restaurant = () => {
         <div className="grid w-full grid-cols-3 grid-rows-2 gap-2 p-2  h-1/2">
           <div className=""></div>
           <div className=""></div>
-          <div className=" "></div>
-          <div className=" "></div>
-          <div className=" "></div>
+          <div className=""></div>
+          <div className=""></div>
+          <div className=""></div>
           <div className=""></div>
         </div>
       </div>

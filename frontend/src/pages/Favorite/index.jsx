@@ -1,6 +1,6 @@
 import { useState } from "react";
 import HomeButton from "../../components/HomeButton";
-import DishItem from "./components/DishItem";
+import DishItem from "../../components/DishItem";
 
 const Favorite = () => {
   const [dishes, setDishes] = useState([
