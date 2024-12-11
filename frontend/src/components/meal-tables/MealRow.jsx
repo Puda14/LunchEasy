@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import StarsReview from "../StarsReview";
+import StarsReviewShow from "../star-ratings/StarsReviewShow";
 import { useNavigate } from "react-router-dom";
 
 const MealRow = ({ meal, price, reviews, cookingTime, address }) => {
@@ -23,8 +23,9 @@ const MealRow = ({ meal, price, reviews, cookingTime, address }) => {
           />
         </div>
       </td>
+      <td className="p-4">{meal}</td>
       <td className="p-4">{price} ¥</td>
-      <td className="p-4">{<StarsReview reviews={reviews} />}</td>
+      <td className="p-4">{<StarsReviewShow reviews={reviews} />}</td>
       <td className="p-4">{cookingTime}</td>
       <td className="p-4">{address}</td>
     </tr>

@@ -8,6 +8,7 @@ import RestaurantList from "./RestaurantList/index.jsx";
 import Settings from "./Settings/index.jsx";
 import History from "./History/index.jsx";
 import Food from "./Food/index.jsx";
+import HealthyRecommendation from "./HealthyRecommendation/index.jsx";
 
 export default {
   Home,
@@ -20,4 +21,5 @@ export default {
   Settings,
   History,
   Food,
+  HealthyRecommendation,
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import initialData from "../../test/restaurants.json";
+import initialData from "../../data/restaurants.json";
 const RestaurantList = () => {
   const [restaurants, setRestaurants] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });

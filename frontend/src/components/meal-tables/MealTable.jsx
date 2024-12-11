@@ -44,6 +44,18 @@ const MealTable = ({ meals }) => {
                 )}
             </div>
           </th>
+          <th className="cursor-pointer" onClick={() => handleSort("meal")}>
+            <div className="flex items-center justify-center">
+              名前
+              {sortConfig.key === "meal" && sortConfig.direction === "asc" && (
+                <FaArrowUp className="ml-2 text-gray-500" />
+              )}
+              {sortConfig.key === "meal" &&
+                sortConfig.direction === "desc" && (
+                  <FaArrowDown className="ml-2 text-gray-500" />
+                )}
+            </div>
+          </th>
           <th className="cursor-pointer" onClick={() => handleSort("reviews")}>
             <div className="flex items-center justify-center">
               レビュー

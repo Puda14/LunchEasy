@@ -1,13 +1,8 @@
-import MealTable from "../../components/meal-tables/MealTable";
-import data from "./data/data";
+import MealList from "../../components/meal-list/MealList";
 
 const History = () => {
   return (
-    <div className="flex flex-row h-screen">
-      <div className="flex justify-center items-center w-full">
-        <MealTable meals={data} />
-      </div>
-    </div>
+    <MealList />
   );
 };
 

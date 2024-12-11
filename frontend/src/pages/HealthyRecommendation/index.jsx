@@ -1,9 +1,9 @@
+import MealList from "../../components/meal-list/MealList";
+
 const HealthyRecommendation = () => {
   return (
-    <div>
+    <MealList />
+  );
+};
 
-    </div>
-  )
-}
-
-export default HealthyRecommendation
+export default HealthyRecommendation;
