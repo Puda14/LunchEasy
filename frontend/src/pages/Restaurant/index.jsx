@@ -15,7 +15,7 @@ const Restaurant = () => {
 
       <div className="flex flex-col w-full h-full pt-20 pl-20 pr-20 text-2xl">
         <div className="flex flex-row w-full h-1/2">
-          <div className="flex flex-col items-center w-2/5 h-full pt-4 pl-4 pr-16 text-lg bg-red-200">
+          <div className="flex flex-col items-center w-2/5 h-full pt-4 pl-4 pr-16 text-lg ">
             {restaurant.name}
             <img
               src={restaurant.imageUrl}
@@ -24,7 +24,7 @@ const Restaurant = () => {
             />
             <div className="text-2xl">..................</div>
           </div>
-          <div className="flex flex-col w-3/5 h-full p-3 bg-green-200">
+          <div className="flex flex-col w-3/5 h-full p-3 ">
             <div className="font-bold">冗談</div>
             <div className="grid grid-cols-2">
               <div className="">
@@ -46,13 +46,13 @@ const Restaurant = () => {
             </div>
           </div>
         </div>
-        <div className="grid w-full grid-cols-3 grid-rows-2 gap-2 p-2 bg-blue-200 h-1/2">
-          <div className="bg-red-400 "></div>
-          <div className="bg-green-400 "></div>
-          <div className="bg-blue-400 "></div>
-          <div className="bg-cyan-400 "></div>
-          <div className="bg-orange-400 "></div>
-          <div className="bg-gray-400"></div>
+        <div className="grid w-full grid-cols-3 grid-rows-2 gap-2 p-2  h-1/2">
+          <div className=""></div>
+          <div className=""></div>
+          <div className=" "></div>
+          <div className=" "></div>
+          <div className=" "></div>
+          <div className=""></div>
         </div>
       </div>
     </div>
