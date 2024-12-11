@@ -1,13 +1,14 @@
 import Information from "./components/Information";
-import StarsReview from "../../components/StarsReview";
+import StarsReviewShow from "../../components/star-ratings/StarsReviewShow";
 import BackButton from "../../components/BackButton";
+import StarsRating from "../../components/star-ratings/StarsRating";
 
 const Food = () => {
   const ingredients = ["パン", "牛肉", "トマト", "サラダ", "マヨネーズ"];
   const informationList = [
     { label: "材料", text: ingredients },
-    { label: "評価する", text: <StarsReview reviews={3} /> },
-    { label: "カロリー", text: "300k" },
+    { label: "評価する", text: <StarsReviewShow reviews={3} /> },
+    { label: "カロリー", text: "300 kcal" },
     { label: "調理時間", text: "1時間" },
     { label: "タンパク質", text: "idk" },
     { label: "価格", text: "350¥" },
@@ -33,23 +34,28 @@ const Food = () => {
           ))}
         </div>
 
-        <div className="mt-4">
-          <button className="p-2 bg-red-500 rounded-full">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6 text-white"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
-              />
-            </svg>
-          </button>
+        <div className="grid grid-cols-2 gap-10">
+          <div className="mt-4">
+            <button className="p-2 bg-red-500 rounded-full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="w-6 h-6 text-white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div>
+            <StarsRating />
+          </div>
         </div>
       </div>
     </div>

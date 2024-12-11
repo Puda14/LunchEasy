@@ -8,7 +8,7 @@ const Home = () => {
         <NavigatorSquare name="歴史" route="/history" />
         <NavigatorSquare name="お気に入り" route="/favorite" />
         <NavigatorSquare name="設定" route="/settings" />
-        <NavigatorSquare name="健康的なお勧め" route="#" />
+        <NavigatorSquare name="健康的なお勧め" route="healthy-recommendation" />
       </div>
     </div>
   );

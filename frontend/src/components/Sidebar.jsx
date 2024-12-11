@@ -66,7 +66,11 @@ const Sidebar = () => {
     "/favorite": {
       title: "お気に入り",
       icon: defaultIcon,
-    }
+    },
+    "/healthy-recommendation": {
+      title: "健康的なお勧め",
+      icon: defaultIcon,
+    },
     // Thêm các đường dẫn khác tại đây
   };
 
