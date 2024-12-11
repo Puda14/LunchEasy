@@ -38,6 +38,7 @@ function App() {
                   />
                   <Route path="/settings" element={<pages.Settings />} />
                   <Route path="/test"></Route>
+                  <Route path="/history" element={<pages.History />} />
                 </Routes>
               }
             />

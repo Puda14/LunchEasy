@@ -1,7 +1,7 @@
 import MealTable from "../../components/meal-tables/MealTable";
 import data from "./data/data";
 
-const Recommendation = () => {
+const History = () => {
   return (
     <div className="flex flex-row h-screen">
       <div className="flex justify-center items-center w-full">
@@ -11,4 +11,4 @@ const Recommendation = () => {
   );
 };
 
-export default Recommendation;
+export default History;
