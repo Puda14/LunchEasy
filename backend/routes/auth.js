@@ -19,38 +19,48 @@ const JWT_SECRET = 'your_jwt_secret'; // Đặt trong biến môi trường tron
  *           schema:
  *             type: object
  *             required:
- *               - username
  *               - email
  *               - password
+ *               - dob
  *             properties:
- *               username:
- *                 type: string
  *               email:
  *                 type: string
  *               password:
  *                 type: string
+ *               dob:
+ *                type: string
+ *                format: date
+ *                description: User's date of birth (YYYY-MM-DD)
+ *                example: "1990-01-01"
  *     responses:
  *       201:
  *         description: User created successfully
  */
 router.post('/signup', async (req, res) => {
-  const { username, email, password, phone, avatar, address } = req.body;
+  const { email, password, dob, phone, avatar, address } = req.body;
 
-  try {
+   try {
+
     // Kiểm tra xem email đã tồn tại chưa
     if (await User.findOne({ email })) {
       return res.status(400).json({ message: 'Email already in use.' });
+    }
+        // Validate date of birth
+    const dobDate = new Date(dob);
+    if (isNaN(dobDate.getTime())) {
+      return res.status(400).json({ message: 'Invalid date of birth format' });
     }
 
     // Hash password và tạo người dùng mới
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
-      username,
+      username:email,
       email,
       password: hashedPassword,
       phone,
       avatar,
       address,
+      dob: dobDate,
     });
 
     res.status(201).json({ message: 'User created successfully.', userId: newUser._id });
