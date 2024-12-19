@@ -26,7 +26,6 @@ services:
       - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
-      - MONGO_URI=<YOUR_MONGO_URI>
       - MONGO_URI=mongodb://mongo:27017/magi
     depends_on:
       - mongo

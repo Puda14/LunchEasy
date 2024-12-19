@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 require('dotenv').config();
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./swagger'); // Import file cấu hình Swagger
@@ -12,6 +14,17 @@ const historyRoutes = require('./routes/history'); // Đường dẫn tới file
 const adminRoutes = require('./routes/admin'); // Đường dẫn tới file admin.js
 
 const app = express();
+// CORS configuration
+const corsOptions = {
+  origin: ['http://localhost:3000', 'http://localhost:5173'], // Frontend URLs
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
 
 //mogodb connection
 const MONGO_URI = 'mongodb://admin:admin123@mongo:27017/magi?authSource=admin' || process.env.MONGO_URI;
