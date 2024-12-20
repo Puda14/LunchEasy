@@ -18,7 +18,7 @@ const NavigatorSquare = ({ name, route }) => {
         onClick={handleClick}
         className="no-underline text-center"
       >
-        <div className="flex items-center justify-center w-[150px] h-[150px] bg-gray-100 rounded">
+        <div className="flex items-center justify-center w-[150px] h-[150px] rounded">
           <img
             src={`/navigators/${name.replace(/\s+/g, "")}.png`}
             alt={name}
