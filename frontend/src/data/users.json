@@ -1,0 +1,98 @@
+[
+  {
+    "username": "Burger King",
+    "email": "burger.king@example.com",
+    "phone": "1234567890",
+    "address": "123 Main St",
+    "dob": "1998-05-15",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Taco Bell",
+    "email": "taco.bell@example.com",
+    "phone": "9876543210",
+    "address": "456 Elm St",
+    "dob": "2000-07-20",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Sushi World",
+    "email": "sushi.world@example.com",
+    "phone": "5678901234",
+    "address": "789 Oak St",
+    "dob": "1995-03-10",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Pasta Heaven",
+    "email": "pasta.heaven@example.com",
+    "phone": "3456789012",
+    "address": "101 Pine St",
+    "dob": "2001-11-25",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Dessert Land",
+    "email": "dessert.land@example.com",
+    "phone": "2345678901",
+    "address": "202 Birch St",
+    "dob": "1997-09-05",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Dessert Land",
+    "email": "dessert.land@example.com",
+    "phone": "2345678901",
+    "address": "202 Birch St",
+    "dob": "1997-09-05",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Dessert Land",
+    "email": "dessert.land@example.com",
+    "phone": "2345678901",
+    "address": "202 Birch St",
+    "dob": "1997-09-05",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Taco Bell",
+    "email": "taco.bell@example.com",
+    "phone": "9876543210",
+    "address": "456 Elm St",
+    "dob": "2000-07-20",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Sushi World",
+    "email": "sushi.world@example.com",
+    "phone": "5678901234",
+    "address": "789 Oak St",
+    "dob": "1995-03-10",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Pasta Heaven",
+    "email": "pasta.heaven@example.com",
+    "phone": "3456789012",
+    "address": "101 Pine St",
+    "dob": "2001-11-25",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Dessert Land",
+    "email": "dessert.land@example.com",
+    "phone": "2345678901",
+    "address": "202 Birch St",
+    "dob": "1997-09-05",
+    "avatar": "/meal/user.png"
+  },
+  {
+    "username": "Dessert Land",
+    "email": "dessert.land@example.com",
+    "phone": "2345678901",
+    "address": "202 Birch St",
+    "dob": "1997-09-05",
+    "avatar": "/meal/user.png"
+  }
+]

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { FaArrowUp, FaArrowDown, FaTrash, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import initialData from "../../data/restaurants.json";
+import initialData from "../../../data/restaurants.json";
 
-const RestaurantList = () => {
+const AdminRestaurantManage = () => {
   const [restaurants, setRestaurants] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const navigate = useNavigate();
@@ -34,10 +34,26 @@ const RestaurantList = () => {
     console.log("Clicked on:", id);
   };
 
+  const handleDelete = (index) => {
+    // TODO: Implement delete functionality
+    // API call to delete restaurant
+    const updatedRestaurants = restaurants.filter((_, i) => i !== index);
+    setRestaurants(updatedRestaurants);
+    console.log("Deleted restaurant at index:", index);
+  };
+
+  const handleAdd = () => {
+    // TODO: Implement add functionality
+    // API call to add new restaurant
+    console.log("Add new restaurant clicked!");
+  };
+
   return (
-    <div className="container p-4 mx-auto">
-      <h1 className="my-4 text-3xl font-bold text-center">レストラン検索</h1>
-      <div className="overflow-y-auto max-h-[650px] border rounded-md">
+    <div className="container p-2 mx-auto relative">
+      <h1 className="my-2 text-3xl font-bold text-center">
+        レストランリストの管理
+      </h1>
+      <div className="overflow-y-auto max-h-[650px] border rounded-md relative">
         <table className="min-w-full mt-0 border-collapse table-auto">
           <thead className="sticky top-0 bg-white shadow">
             <tr>
@@ -90,6 +106,7 @@ const RestaurantList = () => {
                     )}
                 </div>
               </th>
+              <th className="p-2 border-b text-center"></th>
             </tr>
           </thead>
           <tbody>
@@ -97,7 +114,6 @@ const RestaurantList = () => {
               <tr
                 key={index}
                 className="border-b cursor-pointer hover:bg-gray-100"
-                onClick={() => handleRowClick(restaurant)}
               >
                 <td className="p-2">
                   <img
@@ -106,16 +122,38 @@ const RestaurantList = () => {
                     className="object-cover w-16 h-16 rounded-md"
                   />
                 </td>
-                <td className="p-2">{restaurant.name}</td>
-                <td className="p-2">{restaurant.rating}</td>
-                <td className="p-2">{restaurant.distance}</td>
+                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
+                  {restaurant.name}
+                </td>
+                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
+                  {restaurant.rating}
+                </td>
+                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
+                  {restaurant.distance}
+                </td>
+                <td className="p-2 text-center">
+                  <button
+                    onClick={() => handleDelete(index)}
+                    className="text-red-500 hover:text-red-700"
+                  >
+                    <FaTrash />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      <div className="flex justify-end w-full mt-2">
+        <button
+          onClick={handleAdd}
+          className="bg-orange-400 text-white p-3 rounded-full shadow-lg hover:bg-orange-700"
+        >
+          <FaPlus className="text-lg" />
+        </button>
+      </div>
     </div>
   );
 };
 
-export default RestaurantList;
+export default AdminRestaurantManage;
