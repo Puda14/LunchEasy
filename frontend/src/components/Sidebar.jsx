@@ -71,6 +71,18 @@ const Sidebar = () => {
       title: "健康的なお勧め",
       icon: defaultIcon,
     },
+    "/admin/restaurant-management": {
+      title: "レストランリストの管理",
+      icon: defaultIcon,
+    },
+    "/admin/food-management": {
+      title: "料理管理",
+      icon: defaultIcon,
+    },
+    "/admin/user-management": {
+      title: "ユーザー管理",
+      icon: defaultIcon,
+    },
     // Thêm các đường dẫn khác tại đây
   };
 
