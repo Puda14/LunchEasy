@@ -1,11 +1,78 @@
 import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import initialData from "../../data/restaurants.json";
+import { useEffect } from "react";
+import { fetchRestaurants } from "../../services/restaurantService";
+
+const calculateDistance = (lat1, lon1, lat2, lon2) => {
+  const toRad = (value) => (value * Math.PI) / 180;
+
+  const R = 6371; // Radius of the Earth in kilometers
+  const dLat = toRad(lat2 - lat1);
+  const dLon = toRad(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c; // Distance in kilometers
+  return distance;
+};
+
 const RestaurantList = () => {
-  const [restaurants, setRestaurants] = useState(initialData);
+  const [restaurants, setRestaurants] = useState([]);
+  const [userLocation, setUserLocation] = useState(null);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const getUserLocation = () => {
+      console.log("Getting user location...");
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            setUserLocation({ latitude, longitude });
+          },
+          (error) => {
+            console.error('Error getting location:', error.message);
+          }
+        );
+      } else {
+        console.error('Geolocation API not supported by this browser.');
+      }
+    };
+
+    getUserLocation();
+  }, []);
+
+  useEffect(() => {
+    const getRestaurants = async () => {
+      try {
+        const data = await fetchRestaurants();
+        if (userLocation) {
+          const restaurantsWithDistance = data.map((restaurant) => {
+            const distance = calculateDistance(
+              userLocation.latitude,
+              userLocation.longitude,
+              restaurant.latitude,
+              restaurant.longitude
+            );
+            console.log('Distance:', distance);
+            return { ...restaurant, distance };
+          });
+          setRestaurants(restaurantsWithDistance);
+        } else {
+          setRestaurants(data);
+        }
+      } catch (error) {
+        console.error('Error fetching restaurant data:', error);
+      }
+    };
+
+    getRestaurants();
+  }, []);
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -29,7 +96,7 @@ const RestaurantList = () => {
 
   const handleRowClick = (restaurant) => {
     // convert name to lowercase and replace space with dash
-    const id = restaurant.name.toLowerCase().replace(/ /g, "-");
+    const id = restaurant._id;
     navigate(`/restaurants/${id}`);
     console.log("Clicked on:", id);
   };
@@ -73,6 +140,7 @@ const RestaurantList = () => {
                   )}
               </div>
             </th>
+            <th>アドレス</th>
             <th
               className="p-2 text-left border-b cursor-pointer"
               onClick={() => handleSort("distance")}
@@ -89,25 +157,38 @@ const RestaurantList = () => {
                   )}
               </div>
             </th>
+
           </tr>
         </thead>
         <tbody>
-          {restaurants.map((restaurant, index) => (
+          {restaurants.map((restaurant) => (
             <tr
-              key={index}
+              key={restaurant._id}
               className="border-b cursor-pointer hover:bg-gray-100"
               onClick={() => handleRowClick(restaurant)}
             >
               <td className="p-2">
                 <img
-                  src={restaurant.imageUrl}
+                  src={restaurant.images[0]}
                   alt={restaurant.name}
                   className="object-cover w-16 h-16 rounded-md"
                 />
               </td>
               <td className="p-2">{restaurant.name}</td>
               <td className="p-2">{restaurant.rating}</td>
-              <td className="p-2">{restaurant.distance}</td>
+              <td className="p-2">
+                <a
+                  href={restaurant.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Click to go to map"
+                  style={{ textDecoration: 'underline', color: 'black' }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {restaurant.address}
+                </a>
+              </td>
+              <td className="p-2">{restaurant.distance ? `${restaurant.distance.toFixed(2)} km` : 'N/A'}</td>
             </tr>
           ))}
         </tbody>
