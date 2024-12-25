@@ -18,7 +18,7 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-      const { token } = await login(email, password);
+      const {message, token } = await login(email, password);
       toast.success("Login successful");
       // Store token in localStorage if remember is checked
       if (remember) {

@@ -89,4 +89,31 @@ router.get('/:id', authenticateToken, async (req, res) => {
       res.status(500).json({ error: error.message });
     }
   });
+
+/**
+ * @swagger
+ * /restaurants:
+ *   get:
+ *     summary: Get list of restaurants
+ *     description: Retrieve a list of all restaurants
+ *     responses:
+ *       200:
+ *         description: A list of restaurants
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Restaurant'
+ *       500:
+ *         description: Internal server error
+ */
+router.get('/', async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find();
+    res.json(restaurants);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = router;
