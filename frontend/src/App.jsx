@@ -40,7 +40,27 @@ function App() {
                   <Route path="/test"></Route>
                   <Route path="/history" element={<pages.History />} />
                   <Route path="/food" element={<pages.Food />} />
-                  <Route path="/healthy-recommendation" element={<pages.HealthyRecommendation />} />
+                  <Route
+                    path="/healthy-recommendation"
+                    element={<pages.HealthyRecommendation />}
+                  />
+                  <Route
+                    path="/admin/restaurant-management"
+                    element={<pages.AdminRestaurantManage />}
+                  />
+                  <Route
+                    path="/admin/food-management"
+                    element={<pages.FoodManage />}
+                  />
+                  <Route
+                    path="/admin/user-management"
+                    element={<pages.UserManage />}
+                  />
+                  <Route
+                    path="/admin/settings"
+                    element={<pages.AdminSettings />}
+                  />
+                  <Route path="/admin" element={<pages.AdminHome />} />
                 </Routes>
               }
             />

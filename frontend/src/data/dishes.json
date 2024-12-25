@@ -3,21 +3,144 @@
     "meal": "Burger",
     "price": 10,
     "reviews": 4,
-    "cookingTime": "10 minutes",
-    "address": "1234 Main Street"
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
   },
   {
     "meal": "Pizza",
     "price": 15,
     "reviews": 5,
-    "cookingTime": "15 minutes",
-    "address": "5678 Elm Street"
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
   },
   {
     "meal": "Pasta",
     "price": 12,
     "reviews": 3,
-    "cookingTime": "12 minutes",
-    "address": "9101 Pine Street"
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
+  },
+  {
+    "meal": "Burger",
+    "price": 10,
+    "reviews": 4,
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
+  },
+  {
+    "meal": "Pizza",
+    "price": 15,
+    "reviews": 5,
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
+  },
+  {
+    "meal": "Pasta",
+    "price": 12,
+    "reviews": 3,
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
+  },
+  {
+    "meal": "Burger",
+    "price": 10,
+    "reviews": 4,
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
+  },
+  {
+    "meal": "Pizza",
+    "price": 15,
+    "reviews": 5,
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
+  },
+  {
+    "meal": "Pasta",
+    "price": 12,
+    "reviews": 3,
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
+  },
+  {
+    "meal": "Burger",
+    "price": 10,
+    "reviews": 4,
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
+  },
+  {
+    "meal": "Pizza",
+    "price": 15,
+    "reviews": 5,
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
+  },
+  {
+    "meal": "Pasta",
+    "price": 12,
+    "reviews": 3,
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
+  },
+  {
+    "meal": "Burger",
+    "price": 10,
+    "reviews": 4,
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
+  },
+  {
+    "meal": "Pizza",
+    "price": 15,
+    "reviews": 5,
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
+  },
+  {
+    "meal": "Pasta",
+    "price": 12,
+    "reviews": 3,
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
+  },
+  {
+    "meal": "Burger",
+    "price": 10,
+    "reviews": 4,
+    "cookingTime": "10",
+    "address": "1234 Main Street",
+    "imageUrl": "/meal/Burger.png"
+  },
+  {
+    "meal": "Pizza",
+    "price": 15,
+    "reviews": 5,
+    "cookingTime": "15",
+    "address": "5678 Elm Street",
+    "imageUrl": "/meal/Pizza.png"
+  },
+  {
+    "meal": "Pasta",
+    "price": 12,
+    "reviews": 3,
+    "cookingTime": "12",
+    "address": "9101 Pine Street",
+    "imageUrl": "/meal/Pasta.png"
   }
 ]

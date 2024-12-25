@@ -8,8 +8,8 @@ const Sidebar = () => {
   const defaultIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width="35"
+      height="35"
       fill="currentColor"
       className="bi bi-house"
       viewBox="0 0 16 16"
@@ -20,8 +20,8 @@ const Sidebar = () => {
   const loginIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="16"
-      height="16"
+      width="35"
+      height="35"
       fill="currentColor"
       className="bi bi-person-circle"
       viewBox="0 0 16 16"
@@ -71,6 +71,18 @@ const Sidebar = () => {
       title: "健康的なお勧め",
       icon: defaultIcon,
     },
+    "/admin/restaurant-management": {
+      title: "レストランリストの管理",
+      icon: defaultIcon,
+    },
+    "/admin/food-management": {
+      title: "料理管理",
+      icon: defaultIcon,
+    },
+    "/admin/user-management": {
+      title: "ユーザー管理",
+      icon: defaultIcon,
+    },
     // Thêm các đường dẫn khác tại đây
   };
 
@@ -79,8 +91,8 @@ const Sidebar = () => {
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
+        width="35"
+        height="35"
         fill="currentColor"
         className="bi bi-question-circle"
         viewBox="0 0 16 16"

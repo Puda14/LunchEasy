@@ -9,6 +9,11 @@ import Settings from "./Settings/index.jsx";
 import History from "./History/index.jsx";
 import Food from "./Food/index.jsx";
 import HealthyRecommendation from "./HealthyRecommendation/index.jsx";
+import AdminRestaurantManage from "./admin/RestaurantManage/index.jsx";
+import FoodManage from "./admin/FoodManage/index.jsx";
+import UserManage from "./admin/UserManage/index.jsx";
+import AdminSettings from "./admin/Settings/Index.jsx";
+import AdminHome from "./admin/Home/index.jsx";
 
 export default {
   Home,
@@ -22,4 +27,9 @@ export default {
   History,
   Food,
   HealthyRecommendation,
+  AdminRestaurantManage,
+  FoodManage,
+  UserManage,
+  AdminSettings,
+  AdminHome,
 };
