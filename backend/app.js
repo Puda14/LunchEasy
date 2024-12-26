@@ -52,7 +52,7 @@ app.get('/api/v1/example', (req, res) => {
 });
 // Tích hợp route Auth
 app.use('/auth', authRoutes);
-// Tích hợp route Profile 
+// Tích hợp route Profile
 app.use('/user', profileRoutes);
 // Tích hợp route Dish
 app.use('/dishes', dishRoutes);

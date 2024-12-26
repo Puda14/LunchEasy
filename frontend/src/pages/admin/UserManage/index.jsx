@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { FaArrowUp, FaArrowDown, FaTrash, FaPlus } from "react-icons/fa";
+import { FaArrowUp, FaArrowDown, FaTrash } from "react-icons/fa";
 import initialData from "../../../data/users.json";
 
 const AdminUserManage = () => {
   const [users, setUsers] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const [currentPage, setCurrentPage] = useState(1);
+  const usersPerPage = 7; // Number of users per page
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -33,15 +35,25 @@ const AdminUserManage = () => {
   };
 
   const handleRowClick = (user) => {
-    // TODO: Handle row click
     console.log("User clicked:", user);
-    // You can implement navigation or modal here
+    // Additional navigation or modal logic can be added here
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(users.length / usersPerPage);
+  const startIndex = (currentPage - 1) * usersPerPage;
+  const paginatedUsers = users.slice(startIndex, startIndex + usersPerPage);
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   return (
     <div className="container p-2 mx-auto relative">
       <h1 className="my-2 text-3xl font-bold text-center">ユーザー管理</h1>
-      <div className="overflow-y-auto max-h-[650px] border rounded-md relative">
+      <div className="overflow-x-auto border rounded-md">
         <table className="min-w-full mt-0 border-collapse table-auto">
           <thead className="sticky top-0 bg-white shadow">
             <tr>
@@ -130,7 +142,7 @@ const AdminUserManage = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {paginatedUsers.map((user, index) => (
               <tr
                 key={index}
                 className="border-b cursor-pointer hover:bg-gray-100"
@@ -152,7 +164,7 @@ const AdminUserManage = () => {
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDelete(index);
+                      handleDelete(startIndex + index);
                     }}
                     className="text-red-500 hover:text-red-700"
                   >
@@ -163,6 +175,41 @@ const AdminUserManage = () => {
             ))}
           </tbody>
         </table>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center mt-2 space-x-2">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 border rounded-md ${
+            currentPage === 1 ? "bg-gray-200 text-gray-500" : "bg-white"
+          }`}
+        >
+          前へ
+        </button>
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={`px-4 py-2 border rounded-md ${
+              currentPage === i + 1 ? "bg-orange-400 text-white" : "bg-white"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 border rounded-md ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-500"
+              : "bg-white"
+          }`}
+        >
+          次へ
+        </button>
       </div>
     </div>
   );

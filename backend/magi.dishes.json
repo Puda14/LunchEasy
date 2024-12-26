@@ -1,0 +1,945 @@
+[{
+  "_id": {
+    "$oid": "6766456dc202875035f4afc5"
+  },
+  "name": "Hu tieu bo vien",
+  "ingredients": [
+    "Noodle",
+    "Beef",
+    "Pork",
+    "Onion",
+    "spring onion"
+  ],
+  "calories": 350,
+  "protein": 25,
+  "diet_type": "no",
+  "prep_time": 15,
+  "rating": 0,
+  "price": 10.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b10749"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693414/Screenshot_2024-12-20_171820_mp7gvo.png"
+  ],
+  "description": "A delicious and healthy grilled chicken salad.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.951Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.951Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afc6"
+  },
+  "name": "Hu tieu tron",
+  "ingredients": [
+    "Noodle",
+    "Beef",
+    "Pork",
+    "Onion",
+    "spring onion"
+  ],
+  "calories": 400,
+  "protein": 12,
+  "diet_type": "no",
+  "prep_time": 20,
+  "rating": 0,
+  "price": 12.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b10749"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693415/Screenshot_2024-12-20_171717_xgxkrr.png"
+  ],
+  "description": "A nutritious vegan bowl packed with flavors.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afc7"
+  },
+  "name": "Bun bo Hue",
+  "ingredients": [
+    "Noodle",
+    "Beef",
+    "Pork",
+    "Onion",
+    "spring onion"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b10749"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693414/Screenshot_2024-12-20_171754_xigiej.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afc8"
+  },
+  "name": "Pizza 1",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Cheese"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693413/Screenshot_2024-12-20_172151_sppvmt.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afc9"
+  },
+  "name": "Pizza 2",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Cheese"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693413/Screenshot_2024-12-20_172214_zhfq4t.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afca"
+  },
+  "name": "Pizza 3",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Cheese"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693413/Screenshot_2024-12-20_172203_tbjkut.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afcb"
+  },
+  "name": "Pizza 4",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Seafood",
+    "Cheese"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693413/Screenshot_2024-12-20_172226_tcbwwt.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afcc"
+  },
+  "name": "Pizza 5",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Cheese",
+    "rosemary"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693412/Screenshot_2024-12-20_172236_aztbga.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afcd"
+  },
+  "name": "Pizza 6",
+  "ingredients": [
+    "Beef",
+    "Pork",
+    "Bacon",
+    "Onion",
+    "Tomato",
+    "Cheese",
+    "rosemary"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693412/Screenshot_2024-12-20_172248_keaq0r.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.952Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afce"
+  },
+  "name": "Salad 1",
+  "ingredients": [
+    "Fish",
+    "Pork",
+    "Onion",
+    "Tomato",
+    "Cheese",
+    "watercress"
+  ],
+  "calories": 100,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693412/Screenshot_2024-12-20_172416_ycqu7j.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afcf"
+  },
+  "name": "Salad 2",
+  "ingredients": [
+    "coriander",
+    "Onion",
+    "Tomato",
+    "Cheese",
+    "watercress"
+  ],
+  "calories": 100,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693413/Screenshot_2024-12-20_172139_sptlhf.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd0"
+  },
+  "name": "Com tam suon 1",
+  "ingredients": [
+    "Pork",
+    "Rice",
+    "Sauce",
+    "Cucumber"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074b"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693407/Screenshot_2024-12-20_181000_ppwljj.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd1"
+  },
+  "name": "Com tam suon 2",
+  "ingredients": [
+    "Pork",
+    "Rice",
+    "Sauce",
+    "Egg",
+    "Cucumber"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074b"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693408/Screenshot_2024-12-20_181009_zrj5cc.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd2"
+  },
+  "name": "Com tam suon 3",
+  "ingredients": [
+    "Pork",
+    "Rice",
+    "Sauce",
+    "Egg",
+    "Pork rind",
+    "Cucumber"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 8.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074b"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693407/Screenshot_2024-12-20_180950_bwcxcw.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd3"
+  },
+  "name": "Com ga 1",
+  "ingredients": [
+    "Chicken",
+    "Rice",
+    "Sauce"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 15,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693409/Screenshot_2024-12-20_174312_dwasol.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd4"
+  },
+  "name": "Com ga 2",
+  "ingredients": [
+    "Chicken",
+    "Rice",
+    "Sauce",
+    "Egg"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 15,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693409/Screenshot_2024-12-20_174306_jahbkv.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd5"
+  },
+  "name": "Com ga 3",
+  "ingredients": [
+    "Chicken",
+    "Rice",
+    "Sauce",
+    "Basil"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 15,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693408/Screenshot_2024-12-20_174320_iycdrf.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd6"
+  },
+  "name": "Com ga 4",
+  "ingredients": [
+    "Chicken",
+    "Rice",
+    "Sauce",
+    "Chilly"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 15,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693409/Screenshot_2024-12-20_174234_p6tsay.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd7"
+  },
+  "name": "Com ga 5",
+  "ingredients": [
+    "Crab",
+    "Rice",
+    "Sauce",
+    "Chicken"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 10,
+  "rating": 0,
+  "price": 15,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693407/Screenshot_2024-12-20_174226_g5bg8i.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd8"
+  },
+  "name": "Sushi 1",
+  "ingredients": [
+    "Salmon",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173619_syvq7f.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afd9"
+  },
+  "name": "Sushi 2",
+  "ingredients": [
+    "Salmon",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693411/Screenshot_2024-12-20_173605_loxr7b.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afda"
+  },
+  "name": "Sushi 3",
+  "ingredients": [
+    "Tuna",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693411/Screenshot_2024-12-20_173529_fjozl7.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afdb"
+  },
+  "name": "Sushi 4",
+  "ingredients": [
+    "scallops",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693411/Screenshot_2024-12-20_173543_pcjibu.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afdc"
+  },
+  "name": "Sushi 5",
+  "ingredients": [
+    "Herring",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173619_syvq7f.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.953Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afdd"
+  },
+  "name": "Sushi 6",
+  "ingredients": [
+    "Tuna",
+    "Sauce",
+    "Wasabi"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173610_hikxju.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afde"
+  },
+  "name": "Udon 1",
+  "ingredients": [
+    "Udon",
+    "Beef",
+    "Egg",
+    "Onion",
+    "Mushroom"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173736_ku0980.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afdf"
+  },
+  "name": "Soba 1",
+  "ingredients": [
+    "Soba",
+    "Matcha",
+    "Sauce",
+    "Wasabi",
+    "Seaweed",
+    "Onion"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173745_lz67gt.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afe0"
+  },
+  "name": "Com luon 1",
+  "ingredients": [
+    "Eel",
+    "Rice",
+    "Sauce",
+    "Egg",
+    "Salmon Eggs"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "no",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173803_gxddhi.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6766456dc202875035f4afe1"
+  },
+  "name": "Mi chay",
+  "ingredients": [
+    "Udon",
+    "Onion",
+    "Mushroom",
+    "Tofu",
+    "Cabbage"
+  ],
+  "calories": 650,
+  "protein": 30,
+  "diet_type": "vegan",
+  "prep_time": 30,
+  "rating": 0,
+  "price": 18.99,
+  "restaurant_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693410/Screenshot_2024-12-20_173753_seh4zr.png"
+  ],
+  "description": "A classic beef burger with a juicy patty.",
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:34:53.954Z"
+  }
+}]
