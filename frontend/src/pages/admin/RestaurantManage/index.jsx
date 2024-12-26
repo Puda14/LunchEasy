@@ -6,6 +6,8 @@ import initialData from "../../../data/restaurants.json";
 const AdminRestaurantManage = () => {
   const [restaurants, setRestaurants] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
+  const [currentPage, setCurrentPage] = useState(1);
+  const restaurantsPerPage = 7; // Number of restaurants per page
   const navigate = useNavigate();
 
   const handleSort = (key) => {
@@ -35,17 +37,27 @@ const AdminRestaurantManage = () => {
   };
 
   const handleDelete = (index) => {
-    // TODO: Implement delete functionality
-    // API call to delete restaurant
     const updatedRestaurants = restaurants.filter((_, i) => i !== index);
     setRestaurants(updatedRestaurants);
     console.log("Deleted restaurant at index:", index);
   };
 
   const handleAdd = () => {
-    // TODO: Implement add functionality
-    // API call to add new restaurant
     console.log("Add new restaurant clicked!");
+  };
+
+  // Calculate pagination
+  const totalPages = Math.ceil(restaurants.length / restaurantsPerPage);
+  const startIndex = (currentPage - 1) * restaurantsPerPage;
+  const paginatedRestaurants = restaurants.slice(
+    startIndex,
+    startIndex + restaurantsPerPage
+  );
+
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   return (
@@ -53,7 +65,7 @@ const AdminRestaurantManage = () => {
       <h1 className="my-2 text-3xl font-bold text-center">
         レストランリストの管理
       </h1>
-      <div className="overflow-y-auto max-h-[650px] border rounded-md relative">
+      <div className="overflow-x-auto border rounded-md">
         <table className="min-w-full mt-0 border-collapse table-auto">
           <thead className="sticky top-0 bg-white shadow">
             <tr>
@@ -110,7 +122,7 @@ const AdminRestaurantManage = () => {
             </tr>
           </thead>
           <tbody>
-            {restaurants.map((restaurant, index) => (
+            {paginatedRestaurants.map((restaurant, index) => (
               <tr
                 key={index}
                 className="border-b cursor-pointer hover:bg-gray-100"
@@ -133,7 +145,7 @@ const AdminRestaurantManage = () => {
                 </td>
                 <td className="p-2 text-center">
                   <button
-                    onClick={() => handleDelete(index)}
+                    onClick={() => handleDelete(startIndex + index)}
                     className="text-red-500 hover:text-red-700"
                   >
                     <FaTrash />
@@ -144,7 +156,43 @@ const AdminRestaurantManage = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-end w-full mt-2">
+
+      {/* Pagination */}
+      <div className="flex justify-center mt-2 space-x-2">
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 border rounded-md ${
+            currentPage === 1 ? "bg-gray-200 text-gray-500" : "bg-white"
+          }`}
+        >
+          前へ
+        </button>
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i + 1}
+            onClick={() => handlePageChange(i + 1)}
+            className={`px-4 py-2 border rounded-md ${
+              currentPage === i + 1 ? "bg-orange-400 text-white" : "bg-white"
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 border rounded-md ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-500"
+              : "bg-white"
+          }`}
+        >
+          次へ
+        </button>
+      </div>
+
+      <div className="flex justify-end w-full">
         <button
           onClick={handleAdd}
           className="bg-orange-400 text-white p-3 rounded-full shadow-lg hover:bg-orange-700"

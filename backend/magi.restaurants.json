@@ -1,0 +1,202 @@
+[{
+  "_id": {
+    "$oid": "676596cbdcd20edd05b10749"
+  },
+  "name": "Bun Bo Minh Beo",
+  "address": "110e3 P. Lê Thanh Nghị, Bách Khoa, Hai Bà Trưng, Hà Nội, Việt Nam",
+  "latitude": 21.0031998,
+  "longitude": 105.8468134,
+  "mapUrl": "https://maps.app.goo.gl/VH7vwTXuzDWYAGtn8",
+  "rating": 4.5,
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693415/Screenshot_2024-12-20_170348_aelqtw.png"
+  ],
+  "menu": [
+    {
+      "$oid": "6766456dc202875035f4afc5"
+    },
+    {
+      "$oid": "6766456dc202875035f4afc6"
+    },
+    {
+      "$oid": "6766456dc202875035f4afc7"
+    }
+  ],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-20T16:09:47.184Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:42:44.803Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "676596cbdcd20edd05b1074a"
+  },
+  "name": "Pizza 4P's",
+  "address": "11B P. Báo Khánh, Alley, Hoàn Kiếm, Hà Nội, Việt Nam",
+  "latitude": 21.031269,
+  "longitude": 105.8425816,
+  "mapUrl": "https://maps.app.goo.gl/3pnK2xFyFLbfj5oT8",
+  "rating": 4.8,
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693414/Screenshot_2024-12-20_172024_f5jcdd.png"
+  ],
+  "menu": [
+    {
+      "$oid": "6766456dc202875035f4afc8"
+    },
+    {
+      "$oid": "6766456dc202875035f4afc9"
+    },
+    {
+      "$oid": "6766456dc202875035f4afca"
+    },
+    {
+      "$oid": "6766456dc202875035f4afcb"
+    },
+    {
+      "$oid": "6766456dc202875035f4afcc"
+    },
+    {
+      "$oid": "6766456dc202875035f4afcd"
+    },
+    {
+      "$oid": "6766456dc202875035f4afce"
+    },
+    {
+      "$oid": "6766456dc202875035f4afcf"
+    }
+  ],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-20T16:09:47.184Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:42:44.804Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "676596cbdcd20edd05b1074b"
+  },
+  "name": "Com Tam Sa Bi Chuong",
+  "address": "86 P. Nguyễn Văn Tuyết, Trung Liệt, Đống Đa, Hà Nội 700000, Việt Nam",
+  "latitude": 21.0092926,
+  "longitude": 105.8180597,
+  "mapUrl": "https://maps.app.goo.gl/sfzYEyLH1qD7gUkb9",
+  "rating": 4.2,
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693408/Screenshot_2024-12-20_180358_phrd8t.png"
+  ],
+  "menu": [
+    {
+      "$oid": "6766456dc202875035f4afd0"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd1"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd2"
+    }
+  ],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-20T16:09:47.184Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:42:44.804Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "676596cbdcd20edd05b1074c"
+  },
+  "name": "Com ga Kampong",
+  "address": "12 P.Phạm Ngọc Thạch, Kim Liên, Đống Đa, Hà Nội, Việt Nam",
+  "latitude": 21.0078095,
+  "longitude": 105.8143124,
+  "mapUrl": "https://maps.app.goo.gl/o7HhwtxT69ds8bbw7",
+  "rating": 4.2,
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693408/Screenshot_2024-12-20_174132_pszitr.png"
+  ],
+  "menu": [
+    {
+      "$oid": "6766456dc202875035f4afd3"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd4"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd5"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd6"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd7"
+    }
+  ],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-20T16:09:47.184Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:42:44.804Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "676596cbdcd20edd05b1074d"
+  },
+  "name": "ISushi",
+  "address": "17T5 P. Hoàng Đạo Thúy, Trung Hòa Nhân Chính, Cầu Giấy, Hà Nội, Việt Nam",
+  "latitude": 21.0067339,
+  "longitude": 105.8009972,
+  "mapUrl": "https://maps.app.goo.gl/8wThoU7VuBXN8KYe8",
+  "rating": 4.2,
+  "images": [
+    "https://res.cloudinary.com/dc9dg8afp/image/upload/v1734693412/Screenshot_2024-12-20_173423_ejcrvl.png"
+  ],
+  "menu": [
+    {
+      "$oid": "6766456dc202875035f4afd8"
+    },
+    {
+      "$oid": "6766456dc202875035f4afd9"
+    },
+    {
+      "$oid": "6766456dc202875035f4afda"
+    },
+    {
+      "$oid": "6766456dc202875035f4afdb"
+    },
+    {
+      "$oid": "6766456dc202875035f4afdc"
+    },
+    {
+      "$oid": "6766456dc202875035f4afdd"
+    },
+    {
+      "$oid": "6766456dc202875035f4afde"
+    },
+    {
+      "$oid": "6766456dc202875035f4afdf"
+    },
+    {
+      "$oid": "6766456dc202875035f4afe0"
+    },
+    {
+      "$oid": "6766456dc202875035f4afe1"
+    }
+  ],
+  "__v": 0,
+  "createdAt": {
+    "$date": "2024-12-20T16:09:47.185Z"
+  },
+  "updatedAt": {
+    "$date": "2024-12-21T04:42:44.804Z"
+  }
+}]
