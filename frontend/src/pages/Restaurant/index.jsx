@@ -1,17 +1,16 @@
-import { use } from "react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { fetchRestaurantById } from "../../services/restaurantService";
 import BackButton from "../../components/BackButton";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import initialData from "../../data/restaurants.json";
-import DishItem from "../../components/DishItem";
+import DishItem from "./components/DishItem";
+import MenuSlider from "./components/MenuSlider";
 
 const Restaurant = () => {
-  const {id} = useParams();
+  const { id } = useParams();
   const [restaurant, setRestaurant] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
   useEffect(() => {
     const getRestaurant = async () => {
       try {
@@ -40,52 +39,58 @@ const Restaurant = () => {
   }
 
   return (
-    <div className="relative flex flex-col w-full h-full">
-      <div className="absolute w-10 h-auto top-5 left-5">
+    <div className="relative flex flex-col w-full h-full p-5">
+      {/* Back Button */}
+      <div className="absolute w-10 top-5 left-5">
         <BackButton dest="/restaurants" />
       </div>
-
-      <div className="flex flex-col w-full h-full pt-20 pl-20 pr-20 text-2xl">
-        <div className="flex flex-row w-full h-1/2">
-          <div className="flex flex-col items-center w-2/5 h-full pt-4 pl-4 pr-16 text-lg ">
-            {restaurant.name}
+      {/* Restaurant Information */}
+      <div className="flex flex-col w-full">
+        <h1 className="text-3xl font-bold text-center mb-4">
+          {restaurant.name}
+        </h1>
+        <div className="flex flex-row">
+          {/* Left: Image and Address */}
+          <div className="w-1/2 flex flex-col items-center">
             <img
               src={restaurant.images[0]}
               alt={restaurant.name}
-              className="w-5/6 m-2 bg-white h-4/5"
+              className="w-3/5 h-auto max-w-[400px] max-h-[300px] rounded-lg shadow-md mb-4"
             />
-            <div className="text-2xl">..................</div>
           </div>
-          <div className="flex flex-col w-3/5 h-full p-3 ">
-            <div className="font-bold">冗談</div>
-            <div className="grid grid-cols-2">
-              <div className="">
-                ...................
-                <br />
-                ...................
-                <br />
-                ...................
-                <br />
-              </div>
-              <div>
-                ...................
-                <br />
-                ...................
-                <br />
-                ...................
-                <br />
-              </div>
+
+          {/* Right: Details */}
+          <div className="w-1/2 flex flex-col px-3">
+            <div className="text-lg">
+              <p>
+                <span className="font-bold">評価:</span> {restaurant.rating}/5
+              </p>
+              <p>
+                <span className="font-bold">料理の数:</span>{" "}
+                {restaurant.menu.length}
+              </p>
+              <p>
+                <span className="font-bold">最終更新:</span>{" "}
+                {new Date(restaurant.updatedAt).toLocaleString()}
+              </p>
+              <p>
+                <span className="font-bold">アドレス:</span>{" "}
+                <a
+                  href={restaurant.mapUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline break-words"
+                >
+                  {restaurant.address}
+                </a>
+              </p>
             </div>
           </div>
         </div>
-        <div className="grid w-full grid-cols-3 grid-rows-2 gap-2 p-2  h-1/2">
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
-          <div className=""></div>
-        </div>
+      </div>
+      {/* Menu Section */}{" "}
+      <div className="mt-8">
+        <MenuSlider menu={restaurant.menu} />
       </div>
     </div>
   );

@@ -39,7 +39,7 @@ function App() {
                   <Route path="/settings" element={<pages.Settings />} />
                   <Route path="/test"></Route>
                   <Route path="/history" element={<pages.History />} />
-                  <Route path="/food" element={<pages.Food />} />
+                  <Route path="/food/:id" element={<pages.Food />} />
                   <Route
                     path="/healthy-recommendation"
                     element={<pages.HealthyRecommendation />}

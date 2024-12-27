@@ -31,7 +31,7 @@ const AdminRestaurantManage = () => {
   };
 
   const handleRowClick = (restaurant) => {
-    const id = restaurant.name.toLowerCase().replace(/ /g, "-");
+    const id = restaurant._id.toLowerCase().replace(/ /g, "-");
     navigate(`/restaurants/${id}`);
     console.log("Clicked on:", id);
   };
@@ -126,6 +126,7 @@ const AdminRestaurantManage = () => {
               <tr
                 key={index}
                 className="border-b cursor-pointer hover:bg-gray-100"
+                onClick={() => handleRowClick(restaurant)}
               >
                 <td className="p-2">
                   <img
@@ -134,15 +135,9 @@ const AdminRestaurantManage = () => {
                     className="object-cover w-16 h-16 rounded-md"
                   />
                 </td>
-                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
-                  {restaurant.name}
-                </td>
-                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
-                  {restaurant.rating}
-                </td>
-                <td className="p-2" onClick={() => handleRowClick(restaurant)}>
-                  {restaurant.distance}
-                </td>
+                <td className="p-2">{restaurant.name}</td>
+                <td className="p-2">{restaurant.rating}</td>
+                <td className="p-2">{restaurant.distance}</td>
                 <td className="p-2 text-center">
                   <button
                     onClick={() => handleDelete(startIndex + index)}

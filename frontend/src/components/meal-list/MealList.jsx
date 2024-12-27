@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import dishes from "../../data/dishes.json";
 
 const MealList = ({ apiEndpoint }) => {
@@ -7,6 +8,7 @@ const MealList = ({ apiEndpoint }) => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Fetch data from API
@@ -48,8 +50,7 @@ const MealList = ({ apiEndpoint }) => {
   };
 
   const handleRowClick = (dish) => {
-    // Handle row click
-    console.log("Row clicked:", dish);
+    navigate(`/food/${dish._id.toLowerCase().replace(/ /g, "-")}`);
   };
 
   // Calculate the data to display on the current page
