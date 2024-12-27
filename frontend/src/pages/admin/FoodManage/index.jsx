@@ -42,7 +42,7 @@ const FoodManage = () => {
 
   const handleRowClick = (dish) => {
     console.log("Dish clicked:", dish);
-    // navigate(`/dishes/${dish.meal.toLowerCase().replace(/ /g, "-")}`);
+    navigate(`/food/${dish._id.toLowerCase().replace(/ /g, "-")}`);
   };
 
   // Pagination logic
