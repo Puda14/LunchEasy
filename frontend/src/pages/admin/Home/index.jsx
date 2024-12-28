@@ -2,12 +2,12 @@ import NavigatorSquare from "./components/Navigators.jsx";
 
 const Home = () => {
   const routes = [
-    { name: "おすすめ", route: "/recommendation" },
-    { name: "レストラン", route: "/restaurants" },
-    { name: "歴史", route: "/history" },
-    { name: "お気に入り", route: "/favorite" },
-    { name: "設定", route: "/settings" },
-    { name: "健康的なお勧め", route: "/healthy-recommendation" },
+    { name: "おすすめ", route: "/admin/recommendation" },
+    { name: "レストラン", route: "/admin/restaurants" },
+    { name: "歴史", route: "/admin/history" },
+    { name: "お気に入り", route: "/admin/favorite" },
+    { name: "設定", route: "/admin/settings" },
+    { name: "健康的なお勧め", route: "/admin/healthy-recommendation" },
     { name: "レストランリストの管理", route: "/admin/restaurant-management" },
     { name: "料理リストの管理", route: "/admin/food-management" },
     { name: "ユーザー管理", route: "/admin/user-management" },

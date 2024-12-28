@@ -3,6 +3,11 @@ const HomeButton = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+    const currentPath = window.location.pathname;
+    if (currentPath.includes("admin")) {
+      navigate("/admin");
+      return;
+    }
     navigate("/");
   };
 
