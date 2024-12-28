@@ -1,6 +1,18 @@
 import NavigatorSquare from "./components/Navigators.jsx";
-
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 const Home = () => {
+  // if user is not admin, redirect to home page
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+    const role = token ? jwtDecode(token)?.role : null;
+    if (!token || role !== "Admin") {
+      navigate("/");
+    }
+  }, [navigate]);
   const routes = [
     { name: "おすすめ", route: "/admin/recommendation" },
     { name: "レストラン", route: "/admin/restaurants" },
