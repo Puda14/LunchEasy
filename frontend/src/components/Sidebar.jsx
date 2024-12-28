@@ -19,66 +19,58 @@ const Sidebar = () => {
   );
   const recommendationIcon = (
     <img
-    src={`/navigators/おすすめ.png`}
-    alt='おすすめ'
-    className="w-full h-full"
-  />
+      src={`/navigators/おすすめ.png`}
+      alt="おすすめ"
+      className="w-full h-full"
+    />
   );
   const restaurantsIcon = (
     <img
-    src={`/navigators/レストラン.png`}
-    alt='レストラン'
-    className="w-full h-full"
-  />
+      src={`/navigators/レストラン.png`}
+      alt="レストラン"
+      className="w-full h-full"
+    />
   );
   const historyIcon = (
-    <img
-    src={`/navigators/歴史.png`}
-    alt='歴史'
-    className="w-full h-full"
-  />
+    <img src={`/navigators/歴史.png`} alt="歴史" className="w-full h-full" />
   );
   const favoriteIcon = (
     <img
-    src={`/navigators/お気に入り.png`}
-    alt='お気に入り'
-    className="w-full h-full"
-  />
+      src={`/navigators/お気に入り.png`}
+      alt="お気に入り"
+      className="w-full h-full"
+    />
   );
   const settingsIcon = (
-    <img
-    src={`/navigators/設定.png`}
-    alt='設定'
-    className="w-full h-full"
-  />
+    <img src={`/navigators/設定.png`} alt="設定" className="w-full h-full" />
   );
   const healthyIcon = (
     <img
-    src={`/navigators/健康的なお勧め.png`}
-    alt='健康的なお勧め'
-    className="w-full h-full"
-  />
+      src={`/navigators/健康的なお勧め.png`}
+      alt="健康的なお勧め"
+      className="w-full h-full"
+    />
   );
   const adminRestaurantIcon = (
     <img
-    src={`/navigators/レストランリストの管理.png`}
-    alt='レストランリストの管理'
-    className="w-full h-full"
-  />
+      src={`/navigators/レストランリストの管理.png`}
+      alt="レストランリストの管理"
+      className="w-full h-full"
+    />
   );
   const adminFoodIcon = (
     <img
-    src={`/navigators/料理リストの管理.png`}
-    alt='料理リストの管理'
-    className="w-full h-full"
-  />
+      src={`/navigators/料理リストの管理.png`}
+      alt="料理リストの管理"
+      className="w-full h-full"
+    />
   );
   const adminUserIcon = (
     <img
-    src={`/navigators/ユーザー管理.png`}
-    alt='ユーザー管理'
-    className="w-full h-full"
-  />
+      src={`/navigators/ユーザー管理.png`}
+      alt="ユーザー管理"
+      className="w-full h-full"
+    />
   );
   const loginIcon = (
     <svg
@@ -133,8 +125,6 @@ const Sidebar = () => {
     "/healthy-recommendation": {
       title: "健康的なお勧め",
       icon: healthyIcon,
-<<<<<<< Updated upstream
-=======
     },
     "/admin/restaurants": {
       title: "レストラン",
@@ -159,7 +149,6 @@ const Sidebar = () => {
     "/admin/healthy-recommendation": {
       title: "健康的なお勧め",
       icon: healthyIcon,
->>>>>>> Stashed changes
     },
     "/admin": {
       title: "アドミンホーム",
