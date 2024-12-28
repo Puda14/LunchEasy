@@ -57,6 +57,10 @@ function App() {
                     element={<pages.UserManage />}
                   />
                   <Route
+                    path="/admin/restaurant-management/create"
+                    element={<pages.CreateRestaurant />}
+                  />
+                  <Route
                     path="/admin/settings"
                     element={<pages.AdminSettings />}
                   />
