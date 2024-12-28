@@ -133,8 +133,6 @@ const Sidebar = () => {
     "/healthy-recommendation": {
       title: "健康的なお勧め",
       icon: healthyIcon,
-<<<<<<< Updated upstream
-=======
     },
     "/admin/restaurants": {
       title: "レストラン",
@@ -159,7 +157,6 @@ const Sidebar = () => {
     "/admin/healthy-recommendation": {
       title: "健康的なお勧め",
       icon: healthyIcon,
->>>>>>> Stashed changes
     },
     "/admin": {
       title: "アドミンホーム",
@@ -197,7 +194,7 @@ const Sidebar = () => {
     ),
   };
   return (
-    <div className="top-0 bottom-0 left-0 w-60 min-w-60 max-w-60 d-flex flex-column justify-content-between sidebar">
+    <div className="top-0 h-full bottom-0 left-0 w-60 min-w-60 max-w-60 d-flex flex-column justify-content-between sidebar">
       <div className="items-center text-center">
         <div className="mt-2 d-flex justify-content-center align-items-center">
           <img
