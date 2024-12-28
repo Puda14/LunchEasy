@@ -6,7 +6,7 @@ import InputField from "../../components/InputField";
 import CheckBox from "../../components/CheckBox";
 import LandingPageWrapper from "../../components/wrappers/LandingPageWrapper";
 import { login } from "../../services/authService";
-
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -27,7 +27,15 @@ const Login = () => {
         sessionStorage.setItem("token", token);
       }
       // Navigate to home page
-      navigate("/");
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        const role = decodedToken?.role;
+        if (role === "Admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      }
     } catch (err) {
       setError(err.message);
       toast.error(err.message);

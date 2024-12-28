@@ -203,6 +203,8 @@ const Sidebar = () => {
         <button
           className="btn btn-danger"
           onClick={() => {
+            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             navigate("/login");
           }}
         >
