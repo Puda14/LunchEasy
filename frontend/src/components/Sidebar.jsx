@@ -133,6 +133,33 @@ const Sidebar = () => {
     "/healthy-recommendation": {
       title: "健康的なお勧め",
       icon: healthyIcon,
+<<<<<<< Updated upstream
+=======
+    },
+    "/admin/restaurants": {
+      title: "レストラン",
+      icon: restaurantsIcon,
+    },
+    "/admin/settings": {
+      title: "設定",
+      icon: settingsIcon,
+    },
+    "/admin/recommendation": {
+      title: "おすすめ",
+      icon: recommendationIcon,
+    },
+    "/admin/history": {
+      title: "履歴",
+      icon: historyIcon,
+    },
+    "/admin/favorite": {
+      title: "お気に入り",
+      icon: favoriteIcon,
+    },
+    "/admin/healthy-recommendation": {
+      title: "健康的なお勧め",
+      icon: healthyIcon,
+>>>>>>> Stashed changes
     },
     "/admin": {
       title: "アドミンホーム",
