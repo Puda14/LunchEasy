@@ -2,7 +2,18 @@ import React from "react";
 import "./Sidebar.css";
 import { useLocation, Outlet, useNavigate } from "react-router-dom";
 
+import { useEffect, useState } from "react";
+import { jwtDecode } from "jwt-decode";
 const Sidebar = () => {
+  const [email, setEmail] = useState("");
+  let token = localStorage.getItem("token") || sessionStorage.getItem("token");
+  useEffect(() => {
+    let token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+    if (token) {
+      setEmail(token ? jwtDecode(token)?.email : "");
+    }
+  }, [token]);
   const location = useLocation();
   const navigate = useNavigate();
   const defaultIcon = (
@@ -217,7 +228,7 @@ const Sidebar = () => {
             className="rounded-circle"
             style={{ width: "50px", height: "50px", objectFit: "cover" }}
           />
-          <p className="mb-0 ms-2">ユーザー1</p>
+          <p className="mb-0 ms-2">{email}</p>
         </div>
       </div>
 
