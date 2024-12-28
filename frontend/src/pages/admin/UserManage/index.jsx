@@ -1,13 +1,28 @@
 import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown, FaTrash } from "react-icons/fa";
 import initialData from "../../../data/users.json";
+import { useEffect } from "react";
+import { getUsers,getUserById } from "../../../services/adminService";
 
 const AdminUserManage = () => {
-  const [users, setUsers] = useState(initialData);
+  const [users, setUsers] = useState([]);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const usersPerPage = 7; // Number of users per page
 
+  useEffect(() => {
+    loadUsers();
+  }, []);
+  const loadUsers = async () => {
+    try {
+      const data = await getUsers();
+      console.log("Users:", data);
+      setUsers(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  
   const handleSort = (key) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {

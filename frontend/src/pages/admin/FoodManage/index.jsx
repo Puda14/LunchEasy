@@ -1,14 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaArrowDown, FaTrash, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import initialData from "../../../data/dishes.json";
+import { getDishes, deleteDish, getDishById } from "../../../services/adminService";
+
 
 const FoodManage = () => {
-  const [dishes, setDishes] = useState(initialData);
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
-  const [currentPage, setCurrentPage] = useState(1);
-  const dishesPerPage = 7; // Number of dishes per page
   const navigate = useNavigate();
+  const [dishes, setDishes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [currentPage, setCurrentPage] = useState(1);
+  const dishesPerPage = 10;
+
+  useEffect(() => {
+    loadDishes();
+  }, []);
+
+  const loadDishes = async () => {
+    try {
+      setLoading(true);
+      const data = await getDishes();
+      console.log("Dishes:", data);
+      setDishes(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleSort = (key) => {
     let direction = "asc";
@@ -30,10 +52,15 @@ const FoodManage = () => {
     setDishes(sortedData);
   };
 
-  const handleDelete = (index) => {
-    const updatedDishes = dishes.filter((_, i) => i !== index);
-    setDishes(updatedDishes);
-    console.log("Deleted dish at index:", index);
+  const handleDelete = async (id) => {
+    try {
+      await deleteDish(id);
+      setDishes(dishes.filter(dish => dish._id !== id));
+      toast.success("ディッシュは正常に削除されました");
+    } catch (err) {
+      setError(err.message);
+      toast.error("料理の削除に失敗しました");
+    }
   };
 
   const handleAdd = () => {
@@ -43,7 +70,7 @@ const FoodManage = () => {
 
   const handleRowClick = (dish) => {
     console.log("Dish clicked:", dish);
-    navigate(`/food/${dish._id.toLowerCase().replace(/ /g, "-")}`);
+    navigate(`/food/${dish._id}`);
   };
 
   // Pagination logic
@@ -56,7 +83,8 @@ const FoodManage = () => {
       setCurrentPage(page);
     }
   };
-
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
   return (
     <div className="container p-2 mx-auto relative">
       <h1 className="my-2 text-3xl font-bold text-center">料理管理</h1>
@@ -67,15 +95,15 @@ const FoodManage = () => {
               <th className="p-2 border-b"></th>
               <th
                 className="p-2 text-left border-b cursor-pointer"
-                onClick={() => handleSort("meal")}
+                onClick={() => handleSort("name")}
               >
                 <div className="flex items-center">
                   料理名
-                  {sortConfig.key === "meal" &&
+                  {sortConfig.key === "name" &&
                     sortConfig.direction === "asc" && (
                       <FaArrowUp className="text-gray-500 " />
                     )}
-                  {sortConfig.key === "meal" &&
+                  {sortConfig.key === "name" &&
                     sortConfig.direction === "desc" && (
                       <FaArrowDown className="text-gray-500 " />
                     )}
@@ -142,19 +170,19 @@ const FoodManage = () => {
                 <td className="p-2">
                   <img
                     src={dish.imageUrl}
-                    alt={dish.meal}
+                    alt={dish.name}
                     className="object-cover w-16 h-16 rounded-md"
                   />
                 </td>
-                <td className="p-2">{dish.meal}</td>
+                <td className="p-2">{dish.name}</td>
                 <td className="p-2">{dish.price}</td>
-                <td className="p-2">{dish.cookingTime}</td>
+                <td className="p-2">{dish.prep_time}</td>
                 <td className="p-2">{dish.address}</td>
                 <td className="p-2 text-center">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
-                      handleDelete(startIndex + index);
+                      handleDelete(dish._id);
                     }}
                     className="text-red-500 hover:text-red-700"
                   >

@@ -12,6 +12,7 @@ const restaurantRoutes = require('./routes/restaurants'); // Đường dẫn t�
 const favoriteRoutes = require('./routes/favorites'); // Đường dẫn tới file favorite.js
 const historyRoutes = require('./routes/history'); // Đường dẫn tới file history.js
 const adminRoutes = require('./routes/admin'); // Đường dẫn tới file admin.js
+const uploadRoutes = require('./routes/upload'); // Đường dẫn tới file upload.js
 
 const app = express();
 // CORS configuration
@@ -64,6 +65,8 @@ app.use('/favorites', favoriteRoutes);
 app.use('/history', historyRoutes);
 // Tích hợp route Admin
 app.use('/admin', adminRoutes);
+// Tích hợp route Upload
+app.use('/upload', uploadRoutes);
 // Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

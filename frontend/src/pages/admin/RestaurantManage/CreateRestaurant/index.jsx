@@ -1,14 +1,50 @@
 import React, { useState } from "react";
 import BackButton from "../../../../components/BackButton";
+import { useNavigate } from "react-router-dom";
+import { createRestaurant } from "../../../../services/adminService";
+import { uploadImageToCloudinary } from "../../../../services/uploadService";
 
 const CreateRestaurant = () => {
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
   const [restaurantData, setRestaurantData] = useState({
     name: "",
+    latitude: null,
+    longitude: null,
     address: "",
     rating: "",
     mapUrl: "",
     images: [],
   });
+
+  const extractLatLongFromURL = (url) => {
+    try {
+      // Tìm ký tự @ và lấy phần sau nó
+      const match = url.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+  
+      if (match) {
+        const latitude = parseFloat(match[1]);
+        const longitude = parseFloat(match[2]);
+  
+        return { latitude, longitude };
+      }
+  
+      // Nếu không tìm thấy @, thử tìm bằng 3d và 4d
+      const altMatch = url.match(/3d(-?\d+\.\d+)!4d(-?\d+\.\d+)/);
+      if (altMatch) {
+        const latitude = parseFloat(altMatch[1]);
+        const longitude = parseFloat(altMatch[2]);
+  
+        return { latitude, longitude };
+      }
+  
+      throw new Error('Latitude and Longitude not found in URL');
+    } catch (error) {
+      console.error('Error extracting coordinates:', error.message);
+      return null;
+    }
+  }
+
 
   const [error, setError] = useState("");
 
@@ -20,40 +56,77 @@ const CreateRestaurant = () => {
     }));
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setRestaurantData((prev) => ({
-          ...prev,
-          images: [reader.result],
-        }));
-      };
-    } else {
+  
+    if (!file) {
       setRestaurantData((prev) => ({
         ...prev,
         images: [],
       }));
+      return;
+    }
+  
+    try {
+      setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
+  
+      const imageUrl = await uploadImageToCloudinary(file);
+  
+      setRestaurantData((prev) => ({
+        ...prev,
+        images: [imageUrl],
+      }));
+      console.log("Restaurant images:", restaurantData.images);
+    } catch (error) {
+      console.error('Image upload failed:', error.message);
+      setError('画像のアップロードに失敗しました。');
+    } finally {
+      setLoading(false); // Tắt trạng thái loading
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const { name, address, rating, mapUrl, images } = restaurantData;
+    setLoading(true);
+    setError("");
 
-    if (!name || !address || !rating || !mapUrl || images.length === 0) {
+    // Trích xuất Latitude và Longitude từ mapUrl
+    const coordinates = extractLatLongFromURL(restaurantData.mapUrl);
+    if (!coordinates) {
+      setError("マップURLが無効です。緯度と経度を抽出できません。");
+      setLoading(false);
+      return;
+    }
+
+    // Cập nhật latitude và longitude vào restaurantData
+    const updatedData = {
+      ...restaurantData,
+      latitude: coordinates.latitude,
+      longitude: coordinates.longitude,
+    };
+
+    const { name, address,latitude, longitude, rating, mapUrl, images } = updatedData;
+
+    if (!name || !address || !latitude||!longitude || !rating || !mapUrl || images.length === 0) {
       setError(
         "すべての情報を入力し、少なくとも1枚の画像をアップロードしてください!"
       );
       return;
     }
-
+    try {
+      console.log("Creating restaurant:", updatedData);
+      await createRestaurant(updatedData);
+      navigate("/admin/restaurant-management"); // Navigate back to restaurant list
+    }catch (err) {
+      setError(err.message || "Failed to create restaurant");
+    } finally {
+      setLoading(false);
+    }
     alert(
       `追加されたレストラン情報:\n${JSON.stringify(restaurantData, null, 2)}`
     );
   };
+
 
   return (
     <div className="relative flex flex-col w-full h-full p-5">
