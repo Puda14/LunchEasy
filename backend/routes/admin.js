@@ -100,7 +100,7 @@ router.get('/dishes/:id', authenticateToken, checkRole('Admin'), async (req, res
  *         description: Internal server error
  */
 router.post('/dishes', authenticateToken, checkRole('Admin'), async (req, res) => {
-  const { name, ingredients, calories, protein, prep_time, price, restaurant_id } = req.body;
+  const { name, ingredients, calories, protein, prep_time, price,images, restaurant_id } = req.body;
 
   try {
     const newDish = new Dish({
@@ -110,10 +110,17 @@ router.post('/dishes', authenticateToken, checkRole('Admin'), async (req, res) =
       protein,
       prep_time,
       price,
+      images,
       restaurant_id
     });
     
     await newDish.save();
+    // Cập nhật menu của nhà hàng
+    await Restaurant.findByIdAndUpdate(
+    restaurant_id,
+    { $push: { menu: newDish._id } }, // Thêm Dish ID vào menu
+    { new: true, useFindAndModify: false }
+  );
     res.status(201).json({ message: 'Dish added successfully', dish: newDish });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -303,7 +310,7 @@ router.get('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
  *         description: Internal server error
  */
 router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, res) => {
-    const { name, address, latitude, longitude, rating, mapUrl, menu } = req.body;
+    const { name, address, latitude, longitude, rating, mapUrl,images, menu } = req.body;
   
     try {
       const newRestaurant = new Restaurant({
@@ -313,6 +320,7 @@ router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, r
         longitude,
         rating,
         mapUrl,
+        images,
         menu
       });
   

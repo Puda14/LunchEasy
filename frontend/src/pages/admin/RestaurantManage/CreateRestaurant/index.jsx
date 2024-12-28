@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import BackButton from "../../../../components/BackButton";
 import { useNavigate } from "react-router-dom";
 import { createRestaurant } from "../../../../services/adminService";
+import { uploadImageToCloudinary } from "../../../../services/uploadService";
+
 const CreateRestaurant = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -54,22 +56,32 @@ const CreateRestaurant = () => {
     }));
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
-        setRestaurantData((prev) => ({
-          ...prev,
-          images: [reader.result],
-        }));
-      };
-    } else {
+  
+    if (!file) {
       setRestaurantData((prev) => ({
         ...prev,
         images: [],
       }));
+      return;
+    }
+  
+    try {
+      setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
+  
+      const imageUrl = await uploadImageToCloudinary(file);
+  
+      setRestaurantData((prev) => ({
+        ...prev,
+        images: [imageUrl],
+      }));
+      console.log("Restaurant images:", restaurantData.images);
+    } catch (error) {
+      console.error('Image upload failed:', error.message);
+      setError('画像のアップロードに失敗しました。');
+    } finally {
+      setLoading(false); // Tắt trạng thái loading
     }
   };
 

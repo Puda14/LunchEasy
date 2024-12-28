@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../../../components/BackButton";
 import { createDish } from "../../../../services/adminService";
 import { getRestaurants } from "../../../../services/adminService";
+import { uploadImageToCloudinary } from "../../../../services/uploadService";
+
 
 const CreateFood = () => {
   const navigate = useNavigate();
@@ -43,19 +45,32 @@ const CreateFood = () => {
     }));
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onloadend = () => {
+    if (!file) {
+      setFoodData((prev) => ({
+        ...prev,
+        images: [],
+    }));
+    return;
+  };
+      try {
+        setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
+    
+        const imageUrl = await uploadImageToCloudinary(file);
+    
         setFoodData((prev) => ({
           ...prev,
-          images: [...prev.images, reader.result],
+          images: [imageUrl],
         }));
-      };
-    }
-  };
+        console.log("Food images:", foodData.images);
+      } catch (error) {
+        console.error('Image upload failed:', error.message);
+        setError('画像のアップロードに失敗しました。');
+      } finally {
+        setLoading(false); // Tắt trạng thái loading
+      }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
