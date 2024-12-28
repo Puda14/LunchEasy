@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import LandingButton from "../../components/LandingButton";
 import InputField from "../../components/InputField";
 import CheckBox from "../../components/CheckBox";
 import LandingPageWrapper from "../../components/wrappers/LandingPageWrapper";
 import { login } from "../../services/authService";
-
+import { jwtDecode } from "jwt-decode";
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -18,7 +18,7 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-      const {message, token } = await login(email, password);
+      const { message, token } = await login(email, password);
       toast.success("Login successful");
       // Store token in localStorage if remember is checked
       if (remember) {
@@ -26,9 +26,16 @@ const Login = () => {
       } else {
         sessionStorage.setItem("token", token);
       }
-      console.log(token);
       // Navigate to home page
-      navigate("/");
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        const role = decodedToken?.role;
+        if (role === "Admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      }
     } catch (err) {
       setError(err.message);
       toast.error(err.message);

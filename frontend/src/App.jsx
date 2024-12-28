@@ -44,6 +44,28 @@ function App() {
                     path="/healthy-recommendation"
                     element={<pages.HealthyRecommendation />}
                   />
+
+                  {/* ADMIN */}
+                  <Route
+                    path="/admin/recommendation"
+                    element={<pages.Recommendation />}
+                  />
+                  <Route path="/admin/favorite" element={<pages.Favorite />} />
+                  <Route
+                    path="/admin/restaurants"
+                    element={<pages.RestaurantList />}
+                  />
+                  <Route
+                    path="/admin/restaurants/:id"
+                    element={<pages.Restaurant />}
+                  />
+                  <Route path="/admin/settings" element={<pages.Settings />} />
+                  <Route path="/admin/history" element={<pages.History />} />
+                  <Route path="/admin/food/:id" element={<pages.Food />} />
+                  <Route
+                    path="/admin/healthy-recommendation"
+                    element={<pages.HealthyRecommendation />}
+                  />
                   <Route
                     path="/admin/restaurant-management"
                     element={<pages.AdminRestaurantManage />}
@@ -53,8 +75,16 @@ function App() {
                     element={<pages.FoodManage />}
                   />
                   <Route
+                    path="/admin/food-management/create"
+                    element={<pages.CreateFood />}
+                  />
+                  <Route
                     path="/admin/user-management"
                     element={<pages.UserManage />}
+                  />
+                  <Route
+                    path="/admin/restaurant-management/create"
+                    element={<pages.CreateRestaurant />}
                   />
                   <Route
                     path="/admin/settings"

@@ -17,6 +17,69 @@ const Sidebar = () => {
       <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
     </svg>
   );
+  const recommendationIcon = (
+    <img
+    src={`/navigators/おすすめ.png`}
+    alt='おすすめ'
+    className="w-full h-full"
+  />
+  );
+  const restaurantsIcon = (
+    <img
+    src={`/navigators/レストラン.png`}
+    alt='レストラン'
+    className="w-full h-full"
+  />
+  );
+  const historyIcon = (
+    <img
+    src={`/navigators/歴史.png`}
+    alt='歴史'
+    className="w-full h-full"
+  />
+  );
+  const favoriteIcon = (
+    <img
+    src={`/navigators/お気に入り.png`}
+    alt='お気に入り'
+    className="w-full h-full"
+  />
+  );
+  const settingsIcon = (
+    <img
+    src={`/navigators/設定.png`}
+    alt='設定'
+    className="w-full h-full"
+  />
+  );
+  const healthyIcon = (
+    <img
+    src={`/navigators/健康的なお勧め.png`}
+    alt='健康的なお勧め'
+    className="w-full h-full"
+  />
+  );
+  const adminRestaurantIcon = (
+    <img
+    src={`/navigators/レストランリストの管理.png`}
+    alt='レストランリストの管理'
+    className="w-full h-full"
+  />
+  );
+  const adminFoodIcon = (
+    <img
+    src={`/navigators/料理リストの管理.png`}
+    alt='料理リストの管理'
+    className="w-full h-full"
+  />
+  );
+  const adminUserIcon = (
+    <img
+    src={`/navigators/ユーザー管理.png`}
+    alt='ユーザー管理'
+    className="w-full h-full"
+  />
+  );
   const loginIcon = (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -49,39 +112,43 @@ const Sidebar = () => {
     },
     "/restaurants": {
       title: "レストラン",
-      icon: defaultIcon,
+      icon: restaurantsIcon,
     },
     "/settings": {
       title: "設定",
-      icon: defaultIcon,
+      icon: settingsIcon,
     },
     "/recommendation": {
       title: "おすすめ",
-      icon: defaultIcon,
+      icon: recommendationIcon,
     },
     "/history": {
       title: "履歴",
-      icon: defaultIcon,
+      icon: historyIcon,
     },
     "/favorite": {
       title: "お気に入り",
-      icon: defaultIcon,
+      icon: favoriteIcon,
     },
     "/healthy-recommendation": {
       title: "健康的なお勧め",
+      icon: healthyIcon,
+    },
+    "/admin": {
+      title: "アドミンホーム",
       icon: defaultIcon,
     },
     "/admin/restaurant-management": {
       title: "レストランリストの管理",
-      icon: defaultIcon,
+      icon: adminRestaurantIcon,
     },
     "/admin/food-management": {
       title: "料理管理",
-      icon: defaultIcon,
+      icon: adminFoodIcon,
     },
     "/admin/user-management": {
       title: "ユーザー管理",
-      icon: defaultIcon,
+      icon: adminUserIcon,
     },
     // Thêm các đường dẫn khác tại đây
   };
@@ -136,6 +203,8 @@ const Sidebar = () => {
         <button
           className="btn btn-danger"
           onClick={() => {
+            localStorage.removeItem("token");
+            sessionStorage.removeItem("token");
             navigate("/login");
           }}
         >

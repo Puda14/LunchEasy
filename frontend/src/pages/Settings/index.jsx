@@ -109,7 +109,7 @@ const Settings = () => {
       <div className="flex justify-end mt-6">
         <button
           onClick={handleUpdate}
-          className="px-4 py-2 text-white bg-blue-500 rounded-md"
+          className="px-4 py-2 text-white bg-orange-400 rounded-md"
         >
           アップデート
         </button>
