@@ -71,6 +71,10 @@ const Sidebar = () => {
       title: "健康的なお勧め",
       icon: defaultIcon,
     },
+    "/admin": {
+      title: "アドミンホーム",
+      icon: defaultIcon,
+    },
     "/admin/restaurant-management": {
       title: "レストランリストの管理",
       icon: defaultIcon,
