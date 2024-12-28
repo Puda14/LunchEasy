@@ -35,6 +35,12 @@ docker ps
 docker compose down
 ```
 
+## Seed Data
+
+```sh
+sudo docker exec -it luncheasy-backend-1 /bin/bash
+node seed
+```
 ---
 
 ## Members
