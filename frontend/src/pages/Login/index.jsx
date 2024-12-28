@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import LandingButton from "../../components/LandingButton";
 import InputField from "../../components/InputField";
 import CheckBox from "../../components/CheckBox";
@@ -18,7 +18,7 @@ const Login = () => {
     try {
       setLoading(true);
       setError("");
-      const {message, token } = await login(email, password);
+      const { message, token } = await login(email, password);
       toast.success("Login successful");
       // Store token in localStorage if remember is checked
       if (remember) {
@@ -26,7 +26,6 @@ const Login = () => {
       } else {
         sessionStorage.setItem("token", token);
       }
-      console.log(token);
       // Navigate to home page
       navigate("/");
     } catch (err) {
