@@ -3,30 +3,12 @@ import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import dishes from "../../data/dishes.json";
 
-const MealList = ({ apiEndpoint }) => {
+const MealList = ({ dishes }) => {
   const [data, setData] = useState(dishes);
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(7);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Fetch data from API
-    const fetchData = async () => {
-      if (apiEndpoint) {
-        try {
-          console.log(`Fetching data from API: ${apiEndpoint}`);
-          // const response = await fetch(apiEndpoint);
-          // const result = await response.json();
-          // setData(result);
-        } catch (error) {
-          console.error("Error fetching data:", error);
-        }
-      }
-    };
-
-    fetchData();
-  }, [apiEndpoint]);
 
   const handleSort = (key) => {
     // Sorting logic
@@ -50,7 +32,7 @@ const MealList = ({ apiEndpoint }) => {
   };
 
   const handleRowClick = (dish) => {
-    navigate(`/food/${dish._id.toLowerCase().replace(/ /g, "-")}`);
+    navigate(`/food/${dish._id}`);
   };
 
   // Calculate the data to display on the current page
@@ -165,14 +147,14 @@ const MealList = ({ apiEndpoint }) => {
                 <td className="p-2">
                   <img
                     src={dish.imageUrl}
-                    alt={dish.meal}
+                    alt={dish.name}
                     className="object-cover w-16 h-16 rounded-md"
                   />
                 </td>
-                <td className="p-2">{dish.meal}</td>
+                <td className="p-2">{dish.name}</td>
                 <td className="p-2">{dish.price}</td>
-                <td className="p-2">{dish.reviews} ⭐</td>
-                <td className="p-2">{dish.cookingTime}</td>
+                <td className="p-2">{dish.rating} ⭐</td>
+                <td className="p-2">{dish.prep_time}</td>
                 <td className="p-2">{dish.address}</td>
               </tr>
             ))}

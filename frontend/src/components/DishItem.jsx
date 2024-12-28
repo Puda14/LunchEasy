@@ -9,6 +9,7 @@ const DishItem = ({
   restaurant,
   description,
   _id,
+  imageUrl,
 }) => {
   const navigate = useNavigate();
 
@@ -46,7 +47,7 @@ const DishItem = ({
           <div className="flex-grow flex justify-center items-center">
             <img
               className="w-32 rounded-lg"
-              src="/meal/Burger.png"
+              src={imageUrl||"/meal/Burger.png"}
               alt={name}
             />
           </div>

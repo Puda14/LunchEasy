@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 import StarsReviewShow from "../../components/star-ratings/StarsReviewShow";
 import BackButton from "../../components/BackButton";
 import StarsRating from "../../components/star-ratings/StarsRating";
 import { fetchDishById } from "../../services/dishService";
+import { addToFavorites, fetchFavorites } from '../../services/favoriteService';
+
 
 const Food = () => {
   const { id } = useParams(); // Lấy ID từ URL
   const [dish, setDish] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const getDish = async () => {
@@ -25,6 +29,48 @@ const Food = () => {
 
     getDish();
   }, [id]);
+  useEffect(() => {
+    const checkFavoriteStatus = async () => {
+      try {
+        const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+        var userId = "";
+        if (token) {
+          const decodedToken = jwtDecode(token);
+          userId = decodedToken?.id;
+        }
+        if (!userId) {
+          throw new Error('User ID is missing');
+        }
+        console.log('Checking favorite status for user:', userId);
+        const favorites = await fetchFavorites(userId);
+        setIsFavorite(favorites.some(fav => fav._id === dish._id));
+      } catch (error) {
+        console.error('Error checking favorite status:', error);
+      }
+    };
+  
+    if (dish) {
+      checkFavoriteStatus();
+    }
+  }, [dish]);
+  
+  const handleFavoriteClick = async () => {
+    try {
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      var userId = "";
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        userId = decodedToken?.id;
+      }
+      if (!userId) {
+        throw new Error('User ID is missing');
+      }      
+      await addToFavorites(userId, dish._id);
+      setIsFavorite(prev => !prev);
+    } catch (error) {
+      console.error('Error toggling favorite:', error);
+    }
+  };
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -88,22 +134,27 @@ const Food = () => {
         {/* Đánh giá */}
         <div className="grid grid-cols-2 gap-10 mt-10">
           <div className="mt-4">
-            <button className="p-2 bg-red-500 rounded-full">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="w-6 h-6 text-white"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
-                />
-              </svg>
-            </button>
+          <button 
+            onClick={handleFavoriteClick}
+            className={`p-2 rounded-full ${
+              isFavorite ? 'bg-red-500' : 'bg-gray-300'
+            }`}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill={isFavorite ? 'currentColor' : 'none'}
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="w-6 h-6 text-white"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 016.364 0L12 7.636l1.318-1.318a4.5 4.5 0 116.364 6.364L12 21.364l-7.682-7.682a4.5 4.5 0 010-6.364z"
+              />
+            </svg>
+          </button>
           </div>
           <div>
             <StarsRating />
