@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import dishes from "../../data/dishes.json";
 
 const MealList = ({ dishes }) => {
   const [data, setData] = useState(dishes);
@@ -11,7 +10,6 @@ const MealList = ({ dishes }) => {
   const navigate = useNavigate();
 
   const handleSort = (key) => {
-    // Sorting logic
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
       direction = "desc";
@@ -19,7 +17,7 @@ const MealList = ({ dishes }) => {
     setSortConfig({ key, direction });
 
     const sortedData = [...data].sort((a, b) => {
-      if (typeof a[key] === "string") {
+      if (key === "name" || key === "address") {
         return direction === "asc"
           ? a[key].localeCompare(b[key])
           : b[key].localeCompare(a[key]);
@@ -35,14 +33,12 @@ const MealList = ({ dishes }) => {
     navigate(`/food/${dish._id}`);
   };
 
-  // Calculate the data to display on the current page
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentPageData = data.slice(startIndex, startIndex + itemsPerPage);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePageChange = (newPage) => {
-    // Handle page change
     if (newPage >= 1 && newPage <= totalPages) {
       setCurrentPage(newPage);
     }
@@ -57,15 +53,15 @@ const MealList = ({ dishes }) => {
               <th className="p-2 border-b"></th>
               <th
                 className="p-2 text-left border-b cursor-pointer"
-                onClick={() => handleSort("meal")}
+                onClick={() => handleSort("name")}
               >
                 <div className="flex items-center">
                   料理名
-                  {sortConfig.key === "meal" &&
+                  {sortConfig.key === "name" &&
                     sortConfig.direction === "asc" && (
                       <FaArrowUp className="text-gray-500 " />
                     )}
-                  {sortConfig.key === "meal" &&
+                  {sortConfig.key === "name" &&
                     sortConfig.direction === "desc" && (
                       <FaArrowDown className="text-gray-500 " />
                     )}
@@ -89,15 +85,15 @@ const MealList = ({ dishes }) => {
               </th>
               <th
                 className="p-2 text-left border-b cursor-pointer"
-                onClick={() => handleSort("reviews")}
+                onClick={() => handleSort("rating")}
               >
                 <div className="flex items-center">
                   レビュー
-                  {sortConfig.key === "reviews" &&
+                  {sortConfig.key === "rating" &&
                     sortConfig.direction === "asc" && (
                       <FaArrowUp className="text-gray-500 " />
                     )}
-                  {sortConfig.key === "reviews" &&
+                  {sortConfig.key === "rating" &&
                     sortConfig.direction === "desc" && (
                       <FaArrowDown className="text-gray-500 " />
                     )}
@@ -105,15 +101,15 @@ const MealList = ({ dishes }) => {
               </th>
               <th
                 className="p-2 text-left border-b cursor-pointer"
-                onClick={() => handleSort("cookingTime")}
+                onClick={() => handleSort("prep_time")}
               >
                 <div className="flex items-center">
                   調理時間 (分)
-                  {sortConfig.key === "cookingTime" &&
+                  {sortConfig.key === "prep_time" &&
                     sortConfig.direction === "asc" && (
                       <FaArrowUp className="text-gray-500 " />
                     )}
-                  {sortConfig.key === "cookingTime" &&
+                  {sortConfig.key === "prep_time" &&
                     sortConfig.direction === "desc" && (
                       <FaArrowDown className="text-gray-500 " />
                     )}
@@ -161,7 +157,6 @@ const MealList = ({ dishes }) => {
           </tbody>
         </table>
       </div>
-      {/* Pagination */}
       <div className="flex items-center justify-center gap-2 mt-2">
         <button
           onClick={() => handlePageChange(currentPage - 1)}
