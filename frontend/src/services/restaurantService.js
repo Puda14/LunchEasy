@@ -16,13 +16,14 @@ export const fetchRestaurants = async () => {
 
 export const fetchRestaurantById = async (id) => {
   try {
-    var token = localStorage.getItem('token') || sessionStorage.getItem('token');
-    if (!token) {
-      throw new Error('Unauthorized')
-    }
+    // var token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    // if (!token) {
+    //   throw new Error('Unauthorized')
+    // }
     const response = await fetch(`${API_URL}/restaurants/${id}`, {
       headers: {
-        'Authorization': `Bearer ${token}`, // Adjust if needed
+        // 'Authorization': `Bearer ${token}`, // Adjust if needed
+        'Content-Type': 'application/json'
       },
     });
     if (!response.ok) {

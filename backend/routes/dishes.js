@@ -13,11 +13,6 @@ const router = express.Router();
  *     description: Get a list of dishes based on filters like price, preparation time, and location.
  *     parameters:
  *       - in: query
- *         name: price
- *         schema:
- *           type: number
- *         description: Maximum price of dish
- *       - in: query
  *         name: prep_time
  *         schema:
  *           type: number
@@ -32,6 +27,11 @@ const router = express.Router();
  *         schema:
  *           type: number
  *         description: Longitude of user's location
+ *       - in: query
+ *         name: radius
+ *         schema:
+ *           type: number
+ *         description: Search radius in miles from the location
  *     responses:
  *       200:
  *         description: A list of dish suggestions based on filters
@@ -44,28 +44,45 @@ const router = express.Router();
  *       500:
  *         description: Internal server error
  */
-router.get('/suggestions', authenticateToken, checkRole('User'), async (req, res) => {
-  const { price, prep_time, latitude, longitude } = req.query;
+router.get('/suggestions', async (req, res) => {
+  const { prep_time, latitude, longitude, radius } = req.query;
 
   try {
-    // Tìm các nhà hàng trong bán kính 2km từ vị trí người dùng
-    const restaurants = await Restaurant.find({
-      location: {
-        $geoWithin: {
-          $centerSphere: [[longitude, latitude], 2 / 3963], // Bán kính 2km
-        },
-      },
-    });
+    let restaurantFilter = {};
+    let dishFilter = {};
 
-    // Lấy các món ăn từ các nhà hàng tìm được
-    const dishes = await Dish.find({
-      price: { $lte: price },
-      prep_time: { $lte: prep_time },
-      restaurant_id: { $in: restaurants.map((r) => r._id) },
-    });
+    // ✅ 1. Lọc theo vị trí nếu latitude và longitude tồn tại
+    if (latitude && longitude) {
+      restaurantFilter.location = {
+        $geoWithin: {
+          $centerSphere: [
+            [parseFloat(longitude), parseFloat(latitude)], 
+            radius / 3963 // Bán kính radius (3963 mile = bán kính trái đất)
+          ]
+        }
+      };
+
+      // Tìm các nhà hàng phù hợp
+      const restaurants = await Restaurant.find(restaurantFilter).select('_id');
+      const restaurantIds = restaurants.map((r) => r._id);
+
+      // Lọc món ăn từ các nhà hàng gần nhất
+      dishFilter.restaurant_id = { $in: restaurantIds };
+    }
+
+    // ✅ 2. Lọc theo thời gian chuẩn bị (áp dụng cả khi có hoặc không có location)
+    if (prep_time) {
+      dishFilter.prep_time = { $lte: parseInt(prep_time) };
+    }
+
+    // ✅ 3. Tìm các món ăn theo bộ lọc
+    const dishes = await Dish.find(dishFilter)
+      .populate('restaurant_id')
+      .lean();
 
     res.json(dishes);
   } catch (error) {
+    console.error('Error fetching suggestions:', error);
     res.status(500).json({ error: error.message });
   }
 });
@@ -106,14 +123,16 @@ router.get('/suggestions', authenticateToken, checkRole('User'), async (req, res
  *         description: Internal server error
  */
 router.get('/healthy', async (req, res) => {
-    const { maxCalories, minProtein, dietType } = req.query;
-  
+    // const { maxCalories, minProtein, dietType } = req.query;
+    var maxCalories = 500;
+    var minProtein = 20;
+    var dietType = "no";
     try {
       const dishes = await Dish.find({
         calories: { $lte: maxCalories },
         protein: { $gte: minProtein },
         diet_type: dietType
-      });
+      }).populate('restaurant_id');
   
       res.json(dishes);
     } catch (error) {
@@ -146,7 +165,7 @@ router.get('/healthy', async (req, res) => {
  *       500:
  *         description: Internal server error
  */
-router.get('/:id', authenticateToken, async (req, res) => {
+router.get('/:id', async (req, res) => {
     const { id } = req.params;
   
     try {

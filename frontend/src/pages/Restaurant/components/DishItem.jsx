@@ -1,6 +1,9 @@
 import React from "react";
 import { FaStar } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import {jwtDecode} from 'jwt-decode'; 
+import { addToHistory } from '../../../services/historyService';
+
 
 const DishItem = ({ dish }) => {
   const navigate = useNavigate();
@@ -22,9 +25,25 @@ const DishItem = ({ dish }) => {
     }
   };
 
-  const handleClick = () => {
-    // Điều hướng đến trang chi tiết món ăn
-    navigate(`/food/${dish._id}`);
+  const handleClick = async () => {
+    try {
+      const token = sessionStorage.getItem('token');
+      var userId = "";
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        userId = decodedToken?.id;
+      }
+
+      if (userId) {
+        await addToHistory(userId, dish._id);
+      }
+      console.log("Added to history:", userId, dish._id);
+      navigate(`/food/${dish._id}`);
+    } catch (error) {
+      console.error('Error adding to history:', error);
+      // Still navigate even if history save fails
+      navigate(`/food/${dish._id}`);
+    }
   };
 
   return (

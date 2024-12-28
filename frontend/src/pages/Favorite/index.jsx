@@ -1,85 +1,57 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import DishItem from "../../components/DishItem";
-
+import { fetchFavorites, removeFavorite } from '../../services/favoriteService';
+import {jwtDecode} from 'jwt-decode';
 const Favorite = () => {
-  const [dishes, setDishes] = useState([
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 1",
-      rating: 1,
-      price: 20,
-      restaurant: "AAA",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 2",
-      rating: 2,
-      price: 25,
-      restaurant: "BBB",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 3",
-      rating: 3,
-      price: 30,
-      restaurant: "CCC",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 4",
-      rating: 4,
-      price: 35,
-      restaurant: "DDD",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 5",
-      rating: 5,
-      price: 40,
-      restaurant: "EEE",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 6",
-      rating: 4,
-      price: 22,
-      restaurant: "FFF",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 7",
-      rating: 3,
-      price: 18,
-      restaurant: "GGG",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 8",
-      rating: 2,
-      price: 19,
-      restaurant: "HHH",
-      description: "Lorem ipsum dolor sit amet",
-    },
-    {
-      _id: "6766456dc202875035f4afc5",
-      name: "Dish 9",
-      rating: 5,
-      price: 28,
-      restaurant: "III",
-      description: "Lorem ipsum dolor sit amet",
-    },
-  ]);
-
+  const [dishes, setDishes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+  useEffect(() => {
+    loadFavorites();
+  }, []);
+  const loadFavorites = async () => {
+    try {
+      setLoading(true);
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      var userId = "";
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        userId = decodedToken?.id;
+      }
+      if (!userId) {
+        throw new Error('User ID is missing');
+      }        
+      const favoriteDishes = await fetchFavorites(userId);
+      console.log('Favorite Dishes:', favoriteDishes);
+      setDishes(favoriteDishes);
+    } catch (err) {
+      setError('Failed to load favorites');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const removeDish = async (dishId) => {
+    try {
+      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      var userId = "";
+      if (token) {
+        const decodedToken = jwtDecode(token);
+        userId = decodedToken?.id;
+      }
+      if (!userId) {
+        throw new Error('User ID is missing');
+      }        
+      console.log('Removing Favorite:', { userId, dishId });
+      await removeFavorite(userId, dishId);
+      setDishes(dishes.filter(dish => dish._id !== dishId));
+    } catch (err) {
+      console.error('Error removing dish:', err);
+    }
+  };
   const totalPages = Math.ceil(dishes.length / itemsPerPage);
 
   // Lấy dữ liệu món ăn hiện tại
@@ -87,10 +59,6 @@ const Favorite = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
-
-  const removeDish = (name) => {
-    setDishes(dishes.filter((dish) => dish.name !== name));
-  };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -108,11 +76,12 @@ const Favorite = () => {
               key={dish._id}
               _id={dish._id}
               name={dish.name}
-              onRemove={removeDish}
+              onRemove={() => removeDish(dish._id)}
               rating={dish.rating}
               price={dish.price}
-              restaurant={dish.restaurant}
+              restaurant={dish.restaurantName}
               description={dish.description}
+              imageUrl={dish.imageUrl}
             />
           ))}
         </div>
