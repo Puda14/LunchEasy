@@ -43,6 +43,7 @@ const AdminRestaurantManage = () => {
   };
 
   const handleAdd = () => {
+    navigate(`/admin/restaurant-management/create`);
     console.log("Add new restaurant clicked!");
   };
 

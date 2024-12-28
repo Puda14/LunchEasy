@@ -53,8 +53,16 @@ function App() {
                     element={<pages.FoodManage />}
                   />
                   <Route
+                    path="/admin/food-management/create"
+                    element={<pages.CreateFood />}
+                  />
+                  <Route
                     path="/admin/user-management"
                     element={<pages.UserManage />}
+                  />
+                  <Route
+                    path="/admin/restaurant-management/create"
+                    element={<pages.CreateRestaurant />}
                   />
                   <Route
                     path="/admin/settings"

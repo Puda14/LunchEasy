@@ -37,6 +37,7 @@ const FoodManage = () => {
   };
 
   const handleAdd = () => {
+    navigate(`/admin/food-management/create`);
     console.log("Add new dish clicked!");
   };
 
