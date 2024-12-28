@@ -15,6 +15,7 @@ import UserManage from "./admin/UserManage/index.jsx";
 import AdminSettings from "./admin/Settings/Index.jsx";
 import AdminHome from "./admin/Home/index.jsx";
 import CreateRestaurant from "./admin/RestaurantManage/CreateRestaurant/index.jsx";
+import CreateFood from "./admin/FoodManage/CreateFood/index.jsx";
 
 export default {
   Home,
@@ -30,6 +31,7 @@ export default {
   HealthyRecommendation,
   AdminRestaurantManage,
   CreateRestaurant,
+  CreateFood,
   FoodManage,
   UserManage,
   AdminSettings,
