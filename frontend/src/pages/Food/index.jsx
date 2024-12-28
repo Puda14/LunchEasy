@@ -86,6 +86,7 @@ const Food = () => {
     { label: "タンパク質", text: `${dish.protein} g` },
     { label: "価格", text: `${dish.price}¥` },
     { label: "ダイエット", text: dish.diet_type || "N/A" },
+    { label: "説明", text: dish.description || "N/A" },
     {
       label: "レストラン名",
       text: dish.restaurant_id?.name || "N/A",
@@ -134,7 +135,7 @@ const Food = () => {
         </div>
 
         {/* Đánh giá */}
-        <div className="grid grid-cols-2 gap-10 mt-10">
+        <div className="grid grid-cols-2 gap-10 mt-2">
           <div className="mt-4">
             <button
               onClick={handleFavoriteClick}
