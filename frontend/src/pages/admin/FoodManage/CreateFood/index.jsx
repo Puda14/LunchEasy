@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../../../../components/BackButton";
+import { createDish } from "../../../../services/adminService";
+import { getRestaurants } from "../../../../services/adminService";
 
 const CreateFood = () => {
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [foodData, setFoodData] = useState({
     name: "",
     ingredients: "",
@@ -13,10 +18,23 @@ const CreateFood = () => {
     price: "",
     description: "",
     images: [],
+    restaurant_id: "",
   });
-
+  const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState("");
-
+    // Fetch danh sách nhà hàng khi component mount
+    useEffect(() => {
+      const loadRestaurants = async () => {
+        try {
+          const data = await getRestaurants();
+          setRestaurants(data);
+        } catch (err) {
+          console.error("Failed to fetch restaurants:", err);
+        }
+      };
+  
+      loadRestaurants();
+    }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFoodData((prev) => ({
@@ -39,36 +57,22 @@ const CreateFood = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const {
-      name,
-      ingredients,
-      calories,
-      protein,
-      diet_type,
-      prep_time,
-      rating,
-      price,
-    } = foodData;
+    setLoading(true);
+    setError("");
 
-    if (
-      !name ||
-      !ingredients ||
-      !calories ||
-      !protein ||
-      !diet_type ||
-      !prep_time ||
-      !rating ||
-      !price
-    ) {
-      setError("すべての情報を入力してください！");
-      return;
+    try {
+      console.log("Creating food:", foodData);
+      await createDish(foodData);
+      navigate("/admin/food-management"); // Navigate back to food list
+    } catch (err) {
+      setError(err.message || "Failed to create food");
+    } finally {
+      setLoading(false);
     }
-
-    alert(`追加された料理情報:\n${JSON.stringify(foodData, null, 2)}`);
   };
-
+  
   return (
     <div className="relative flex flex-col w-full h-full p-5">
       {/* Back Button */}
@@ -165,7 +169,23 @@ const CreateFood = () => {
             })}
           </select>
         </div>
-
+        {/* Restaurant Selection */}
+        <div className="flex flex-col">
+          <label className="font-medium mb-2">レストランを選択 (Select Restaurant)</label>
+          <select
+            name="restaurant_id"
+            value={foodData.restaurant_id}
+            onChange={handleChange}
+            className="w-full mb-4 p-2 border rounded-lg"
+          >
+            <option value="">レストランを選択してください</option>
+            {restaurants.map((restaurant) => (
+              <option key={restaurant._id} value={restaurant._id}>
+                {restaurant.name}
+              </option>
+            ))}
+          </select>
+        </div>
         {/* Bottom Right: Diet Type, Prep Time, Rating, Price */}
         <div className="flex flex-col">
           <label className="font-medium mb-2">ダイエットタイプ</label>
@@ -208,13 +228,24 @@ const CreateFood = () => {
 
       {/* Submit Button */}
       <div className="flex justify-center mt-4">
-        <button
+      <form onSubmit={handleSubmit}>
+          {/* Keep your existing form fields */}
+          <button 
+            type="submit" 
+            disabled={loading}
+            className={`mt-4 px-6 py-2 bg-blue-500 text-white rounded 
+              ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+          >
+            {loading ? 'Creating...' : '料理を作成する'}
+          </button>
+        </form>
+        {/* <button
           type="submit"
           onClick={handleSubmit}
           className="px-4 py-2 bg-orange-400 text-white font-bold rounded-lg hover:bg-orange-700 shadow"
         >
           料理を作成する
-        </button>
+        </button> */}
       </div>
     </div>
   );

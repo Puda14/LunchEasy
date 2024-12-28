@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowUp, FaArrowDown, FaTrash, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { toast } from 'react-toastify';
 import initialData from "../../../data/restaurants.json";
+import { getRestaurants, deleteRestaurant, getRestaurantById } from "../../../services/adminService";
 
 const AdminRestaurantManage = () => {
-  const [restaurants, setRestaurants] = useState(initialData);
+  const [restaurants, setRestaurants] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
   const restaurantsPerPage = 7; // Number of restaurants per page
   const navigate = useNavigate();
 
+  useEffect(() => {
+    loadRestaurants();
+  },[]);
+  const loadRestaurants = async () => {
+    try {
+      setLoading(true);
+      const data = await getRestaurants();
+      console.log("Restaurants:", data);
+      setRestaurants(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   const handleSort = (key) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -31,15 +50,22 @@ const AdminRestaurantManage = () => {
   };
 
   const handleRowClick = (restaurant) => {
-    const id = restaurant._id.toLowerCase().replace(/ /g, "-");
+    const id = restaurant._id;
     navigate(`/restaurants/${id}`);
     console.log("Clicked on:", id);
   };
 
-  const handleDelete = (index) => {
-    const updatedRestaurants = restaurants.filter((_, i) => i !== index);
-    setRestaurants(updatedRestaurants);
-    console.log("Deleted restaurant at index:", index);
+  const handleDelete = async (restaurant_id) => {
+    try {
+      await deleteRestaurant(restaurant_id);
+      setRestaurants(restaurants.filter(restaurant => restaurant._id !== restaurant_id));
+      toast.success('レストランが正常に削除されました！');
+
+    } catch (err) {
+      toast.error('レストランの削除に失敗しました。');
+      setError(err.message);
+    }
+    console.log("Deleted restaurant at index:", restaurant_id);
   };
 
   const handleAdd = () => {
@@ -87,6 +113,7 @@ const AdminRestaurantManage = () => {
                     )}
                 </div>
               </th>
+              <th>アドレス</th>
               <th
                 className="p-2 text-left border-b cursor-pointer"
                 onClick={() => handleSort("rating")}
@@ -98,22 +125,6 @@ const AdminRestaurantManage = () => {
                       <FaArrowUp className="text-gray-500 " />
                     )}
                   {sortConfig.key === "rating" &&
-                    sortConfig.direction === "desc" && (
-                      <FaArrowDown className="text-gray-500 " />
-                    )}
-                </div>
-              </th>
-              <th
-                className="p-2 text-left border-b cursor-pointer"
-                onClick={() => handleSort("distance")}
-              >
-                <div className="flex items-center">
-                  半程範圖 (km)
-                  {sortConfig.key === "distance" &&
-                    sortConfig.direction === "asc" && (
-                      <FaArrowUp className="text-gray-500 " />
-                    )}
-                  {sortConfig.key === "distance" &&
                     sortConfig.direction === "desc" && (
                       <FaArrowDown className="text-gray-500 " />
                     )}
@@ -131,17 +142,20 @@ const AdminRestaurantManage = () => {
               >
                 <td className="p-2">
                   <img
-                    src={restaurant.imageUrl}
+                    src={restaurant.images[0]}
                     alt={restaurant.name}
                     className="object-cover w-16 h-16 rounded-md"
                   />
                 </td>
                 <td className="p-2">{restaurant.name}</td>
+                <td className="p-2">{restaurant.address}</td>
                 <td className="p-2">{restaurant.rating}</td>
-                <td className="p-2">{restaurant.distance}</td>
                 <td className="p-2 text-center">
                   <button
-                    onClick={() => handleDelete(startIndex + index)}
+                    onClick={(e) =>{
+                      e.stopPropagation();
+                      handleDelete(restaurant._id) // Prevent row click event
+                    } }
                     className="text-red-500 hover:text-red-700"
                   >
                     <FaTrash />

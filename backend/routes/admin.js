@@ -14,6 +14,8 @@ const router = express.Router();
  *   get:
  *     summary: Get a list of all dishes
  *     description: Admin can get a list of all dishes in the system.
+ *     security:
+ *      - bearerAuth: []
  *     responses:
  *       200:
  *         description: A list of dishes
@@ -41,6 +43,8 @@ router.get('/dishes', authenticateToken, checkRole('Admin'), async (req, res) =>
  *   get:
  *     summary: Get dish details
  *     description: Admin can view details of a specific dish by ID.
+*      security:
+ *      - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -81,6 +85,8 @@ router.get('/dishes/:id', authenticateToken, checkRole('Admin'), async (req, res
  *   post:
  *     summary: Add a new dish
  *     description: Admin can add a new dish to the menu.
+ *     security:
+ *     - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -120,6 +126,8 @@ router.post('/dishes', authenticateToken, checkRole('Admin'), async (req, res) =
  *   put:
  *     summary: Update an existing dish
  *     description: Admin can update an existing dish's details.
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -170,6 +178,8 @@ router.put('/dishes/:id', authenticateToken, checkRole('Admin'), async (req, res
  *   delete:
  *     summary: Delete a dish
  *     description: Admin can delete a dish.
+ *     security:
+ *      - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -207,6 +217,8 @@ router.delete('/dishes/:id', authenticateToken, checkRole('Admin'), async (req, 
  *   get:
  *     summary: Get a list of all restaurants
  *     description: Admin can get a list of all restaurants in the system.
+ *     security:
+ *     - bearerAuth: []
  *     responses:
  *       200:
  *         description: A list of restaurants
@@ -234,6 +246,8 @@ router.get('/restaurants', authenticateToken, checkRole('Admin'), async (req, re
  *   get:
  *     summary: Get restaurant details
  *     description: Admin can view details of a specific restaurant by ID.
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -274,6 +288,8 @@ router.get('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
  *   post:
  *     summary: Add a new restaurant
  *     description: Admin can add a new restaurant.
+ *     security:
+ *      - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -287,7 +303,7 @@ router.get('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
  *         description: Internal server error
  */
 router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, res) => {
-    const { name, address, latitude, longitude, rating, menu } = req.body;
+    const { name, address, latitude, longitude, rating, mapUrl, menu } = req.body;
   
     try {
       const newRestaurant = new Restaurant({
@@ -296,6 +312,7 @@ router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, r
         latitude,
         longitude,
         rating,
+        mapUrl,
         menu
       });
   
@@ -312,6 +329,8 @@ router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, r
    *   put:
    *     summary: Update an existing restaurant
    *     description: Admin can update an existing restaurant's details.
+   *     security:
+   *      - bearerAuth: []
    *     parameters:
    *       - in: path
    *         name: id
@@ -361,6 +380,8 @@ router.put('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
    *   delete:
    *     summary: Delete a restaurant
    *     description: Admin can delete a restaurant.
+   *     security:
+   *       - bearerAuth: []
    *     parameters:
    *       - in: path
    *         name: id
@@ -398,6 +419,8 @@ router.delete('/restaurants/:id', authenticateToken, checkRole('Admin'), async (
  *   get:
  *     summary: Get a list of all users
  *     description: Admin can get a list of all users in the system.
+ *     security:
+ *      - bearerAuth: []
  *     responses:
  *       200:
  *         description: A list of users
@@ -425,6 +448,8 @@ router.get('/users', authenticateToken, checkRole('Admin'), async (req, res) => 
  *   get:
  *     summary: Get user details
  *     description: Admin can view details of a specific user by ID.
+ *     security:
+ *      - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -465,6 +490,8 @@ router.get('/users/:id', authenticateToken, checkRole('Admin'), async (req, res)
  *   post:
  *     summary: Add a new user
  *     description: Admin can add a new user.
+ *     security:
+ *      - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -512,6 +539,8 @@ router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) =>
    *   put:
    *     summary: Update user information
    *     description: Admin can update a user's details.
+   *     security:
+   *      - bearerAuth: []
    *     parameters:
    *       - in: path
    *         name: id
@@ -562,6 +591,8 @@ router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) =>
    *   delete:
    *     summary: Delete a user
    *     description: Admin can delete a user.
+   *     security:
+   *       - bearerAuth: []
    *     parameters:
    *       - in: path
    *         name: id
