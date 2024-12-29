@@ -3,17 +3,20 @@ import { FaArrowUp, FaArrowDown, FaTrash, FaPlus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import initialData from "../../../data/dishes.json";
-import { getDishes, deleteDish, getDishById } from "../../../services/adminService";
-
+import {
+  getDishes,
+  deleteDish,
+  getDishById,
+} from "../../../services/adminService";
 
 const FoodManage = () => {
   const navigate = useNavigate();
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: "asc" });
   const [currentPage, setCurrentPage] = useState(1);
-  const dishesPerPage = 10;
+  const dishesPerPage = 7;
 
   useEffect(() => {
     loadDishes();
@@ -55,7 +58,7 @@ const FoodManage = () => {
   const handleDelete = async (id) => {
     try {
       await deleteDish(id);
-      setDishes(dishes.filter(dish => dish._id !== id));
+      setDishes(dishes.filter((dish) => dish._id !== id));
       toast.success("ディッシュは正常に削除されました");
     } catch (err) {
       setError(err.message);
