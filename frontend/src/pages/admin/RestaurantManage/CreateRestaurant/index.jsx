@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import BackButton from "../../../../components/BackButton";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { createRestaurant } from "../../../../services/adminService";
 import { uploadImageToCloudinary } from "../../../../services/uploadService";
@@ -76,8 +77,10 @@ const CreateRestaurant = () => {
         ...prev,
         images: [imageUrl],
       }));
+      toast.success("画像が正常にアップロードされました");
       console.log("Restaurant images:", restaurantData.images);
     } catch (error) {
+      toast.error("画像のアップロードに失敗しました");
       console.error('Image upload failed:', error.message);
       setError('画像のアップロードに失敗しました。');
     } finally {
@@ -116,8 +119,10 @@ const CreateRestaurant = () => {
     try {
       console.log("Creating restaurant:", updatedData);
       await createRestaurant(updatedData);
+      toast.success("レストランが正常に作成されました");
       navigate("/admin/restaurant-management"); // Navigate back to restaurant list
     }catch (err) {
+      toast.error("レストランの作成に失敗しました"); 
       setError(err.message || "Failed to create restaurant");
     } finally {
       setLoading(false);
