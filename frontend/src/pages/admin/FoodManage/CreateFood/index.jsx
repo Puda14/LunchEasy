@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {toast} from "react-toastify";
 import BackButton from "../../../../components/BackButton";
 import { createDish } from "../../../../services/adminService";
 import { getRestaurants } from "../../../../services/adminService";
@@ -50,26 +51,28 @@ const CreateFood = () => {
       setFoodData((prev) => ({
         ...prev,
         images: [],
-      }));
-      return;
-    }
-    try {
-      setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
-
-      const imageUrl = await uploadImageToCloudinary(file);
-
-      setFoodData((prev) => ({
-        ...prev,
-        images: [imageUrl],
-      }));
-      console.log("Food images:", foodData.images);
-    } catch (error) {
-      console.error("Image upload failed:", error.message);
-      setError("画像のアップロードに失敗しました。");
-    } finally {
-      setLoading(false); // Tắt trạng thái loading
-    }
+    }));
+    return;
   };
+      try {
+        setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
+    
+        const imageUrl = await uploadImageToCloudinary(file);
+    
+        setFoodData((prev) => ({
+          ...prev,
+          images: [imageUrl],
+        }));
+        toast.success("画像が正常にアップロードされました");
+        console.log("Food images:", foodData.images);
+      } catch (error) {
+        console.error('Image upload failed:', error.message);
+        toast.error("画像のアップロードに失敗しました");
+        setError('画像のアップロードに失敗しました。');
+      } finally {
+        setLoading(false); // Tắt trạng thái loading
+      }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,9 +82,11 @@ const CreateFood = () => {
     try {
       console.log("Creating food:", foodData);
       await createDish(foodData);
+      toast.success("料理が正常に作成されました");
       navigate("/admin/food-management"); // Navigate back to food list
     } catch (err) {
-      setError("料理の作成に失敗しました");
+      toast.error("料理の作成に失敗しました");
+      setError(err.message || "Failed to create food");
     } finally {
       setLoading(false);
     }
