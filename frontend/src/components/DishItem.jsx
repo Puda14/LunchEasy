@@ -38,7 +38,7 @@ const DishItem = ({
     <div className="flex flex-col w-72">
       <div
         onClick={handleClick}
-        className="flex flex-col w-72 p-4 mt-4 border border-gray-300 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-200 hover:scale-105 hover:shadow-lg transition-all"
+        className="flex flex-col w-72 p-2 mt-2 border border-gray-300 bg-gray-50 rounded-lg shadow-sm hover:bg-gray-200 hover:scale-105 hover:shadow-lg transition-all"
       >
         <div className="flex flex-row items-center flex-grow gap-2 mb-2">
           <div className="w-1/4">
@@ -46,8 +46,8 @@ const DishItem = ({
           </div>
           <div className="flex-grow flex justify-center items-center">
             <img
-              className="w-32 rounded-lg"
-              src={imageUrl||"/meal/Burger.png"}
+              className="max-w-[120px] max-h-[120px] rounded-lg"
+              src={imageUrl || "/meal/Burger.png"}
               alt={name}
             />
           </div>

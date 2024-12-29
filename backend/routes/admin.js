@@ -66,19 +66,19 @@ router.get('/dishes', authenticateToken, checkRole('Admin'), async (req, res) =>
  */
 router.get('/dishes/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
-  
+
     try {
       const dish = await Dish.findById(id).populate('restaurant_id');
       if (!dish) {
         return res.status(404).json({ message: 'Dish not found' });
       }
-  
+
       res.json(dish);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
 /**
  * @swagger
  * /admin/dishes:
@@ -113,7 +113,7 @@ router.post('/dishes', authenticateToken, checkRole('Admin'), async (req, res) =
       images,
       restaurant_id
     });
-    
+
     await newDish.save();
     // Cập nhật menu của nhà hàng
     await Restaurant.findByIdAndUpdate(
@@ -276,19 +276,19 @@ router.get('/restaurants', authenticateToken, checkRole('Admin'), async (req, re
  */
 router.get('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
-  
+
     try {
       const restaurant = await Restaurant.findById(id).populate('menu');
       if (!restaurant) {
         return res.status(404).json({ message: 'Restaurant not found' });
       }
-  
+
       res.json(restaurant);
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
 /**
  * @swagger
  * /admin/restaurants:
@@ -311,7 +311,7 @@ router.get('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
  */
 router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { name, address, latitude, longitude, rating, mapUrl,images, menu } = req.body;
-  
+
     try {
       const newRestaurant = new Restaurant({
         name,
@@ -323,14 +323,14 @@ router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, r
         images,
         menu
       });
-  
+
       await newRestaurant.save();
       res.status(201).json({ message: 'Restaurant added successfully', restaurant: newRestaurant });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
   /**
    * @swagger
    * /admin/restaurants/{id}:
@@ -361,7 +361,7 @@ router.post('/restaurants', authenticateToken, checkRole('Admin'), async (req, r
 router.put('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
     const { name, address, latitude, longitude, rating, menu } = req.body;
-  
+
     try {
       const restaurant = await Restaurant.findByIdAndUpdate(id, {
         name,
@@ -371,17 +371,17 @@ router.put('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
         rating,
         menu
       }, { new: true });
-  
+
       if (!restaurant) {
         return res.status(404).json({ message: 'Restaurant not found' });
       }
-  
+
       res.status(200).json({ message: 'Restaurant updated successfully', restaurant });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
   /**
    * @swagger
    * /admin/restaurants/{id}:
@@ -407,14 +407,14 @@ router.put('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req
    */
 router.delete('/restaurants/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
-  
+
     try {
       const restaurant = await Restaurant.findByIdAndDelete(id);
-  
+
       if (!restaurant) {
         return res.status(404).json({ message: 'Restaurant not found' });
       }
-  
+
       res.status(200).json({ message: 'Restaurant deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -479,13 +479,13 @@ router.get('/users', authenticateToken, checkRole('Admin'), async (req, res) => 
  */
 router.get('/users/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
-  
+
     try {
       const user = await User.findById(id);
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-  
+
       res.json(user);
     } catch (error) {
       res.status(500).json({ error: error.message });
@@ -524,7 +524,7 @@ router.get('/users/:id', authenticateToken, checkRole('Admin'), async (req, res)
  */
 router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { username, email, password, role } = req.body;
-  
+
     try {
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
@@ -533,14 +533,14 @@ router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) =>
         password: hashedPassword,
         role
       });
-  
+
       await newUser.save();
       res.status(201).json({ message: 'User added successfully', user: newUser });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
   /**
    * @swagger
    * /admin/users/{id}:
@@ -579,20 +579,20 @@ router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) =>
   router.put('/users/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
     const { username, email, role } = req.body;
-  
+
     try {
       const user = await User.findByIdAndUpdate(id, { username, email, role }, { new: true });
-  
+
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-  
+
       res.status(200).json({ message: 'User updated successfully', user });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
   /**
    * @swagger
    * /admin/users/{id}:
@@ -618,18 +618,18 @@ router.post('/users', authenticateToken, checkRole('Admin'), async (req, res) =>
    */
   router.delete('/users/:id', authenticateToken, checkRole('Admin'), async (req, res) => {
     const { id } = req.params;
-  
+
     try {
       const user = await User.findByIdAndDelete(id);
-  
+
       if (!user) {
         return res.status(404).json({ message: 'User not found' });
       }
-  
+
       res.status(200).json({ message: 'User deleted successfully' });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
   });
-  
+
 module.exports = router;

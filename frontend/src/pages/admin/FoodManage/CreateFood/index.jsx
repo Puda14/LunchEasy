@@ -6,7 +6,6 @@ import { createDish } from "../../../../services/adminService";
 import { getRestaurants } from "../../../../services/adminService";
 import { uploadImageToCloudinary } from "../../../../services/uploadService";
 
-
 const CreateFood = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -25,19 +24,19 @@ const CreateFood = () => {
   });
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState("");
-    // Fetch danh sách nhà hàng khi component mount
-    useEffect(() => {
-      const loadRestaurants = async () => {
-        try {
-          const data = await getRestaurants();
-          setRestaurants(data);
-        } catch (err) {
-          console.error("Failed to fetch restaurants:", err);
-        }
-      };
-  
-      loadRestaurants();
-    }, []);
+  // Fetch danh sách nhà hàng khi component mount
+  useEffect(() => {
+    const loadRestaurants = async () => {
+      try {
+        const data = await getRestaurants();
+        setRestaurants(data);
+      } catch (err) {
+        console.error("Failed to fetch restaurants:", err);
+      }
+    };
+
+    loadRestaurants();
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFoodData((prev) => ({
@@ -92,7 +91,7 @@ const CreateFood = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="relative flex flex-col w-full h-full p-5">
       {/* Back Button */}
@@ -171,57 +170,6 @@ const CreateFood = () => {
             placeholder="タンパク質量を入力してください"
             className="w-full mb-4 p-2 border rounded-lg"
           />
-          <label className="font-medium mb-2">評価 (1-5)</label>
-          <select
-            name="rating"
-            value={foodData.rating}
-            onChange={handleChange}
-            className="w-full mb-4 p-2 border rounded-lg"
-          >
-            <option value="">評価を選択してください</option>
-            {Array.from({ length: 9 }, (_, index) => {
-              const value = (index + 2) / 2; // 1.0, 1.5, ..., 5.0
-              return (
-                <option key={value} value={value}>
-                  {value.toFixed(1)}
-                </option>
-              );
-            })}
-          </select>
-        </div>
-        {/* Restaurant Selection */}
-        <div className="flex flex-col">
-          <label className="font-medium mb-2">レストランを選択 (Select Restaurant)</label>
-          <select
-            name="restaurant_id"
-            value={foodData.restaurant_id}
-            onChange={handleChange}
-            className="w-full mb-4 p-2 border rounded-lg"
-          >
-            <option value="">レストランを選択してください</option>
-            {restaurants.map((restaurant) => (
-              <option key={restaurant._id} value={restaurant._id}>
-                {restaurant.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        {/* Bottom Right: Diet Type, Prep Time, Rating, Price */}
-        <div className="flex flex-col">
-          <label className="font-medium mb-2">ダイエットタイプ</label>
-          <select
-            name="diet_type"
-            value={foodData.diet_type}
-            onChange={handleChange}
-            className="w-full mb-4 p-2 border rounded-lg"
-          >
-            <option value="">ダイエットタイプを選択してください</option>
-            <option value="vegan">ビーガン</option>
-            <option value="keto">ケト</option>
-            <option value="vegetarian">ベジタリアン</option>
-            <option value="other">その他</option>
-            <option value="no">指定なし</option>
-          </select>
           <label className="font-medium mb-2">調理時間 (分)</label>
           <input
             type="number"
@@ -241,31 +189,78 @@ const CreateFood = () => {
             className="w-full mb-4 p-2 border rounded-lg"
           />
         </div>
-      </div>
-
-      {/* Error Display */}
-      {error && <p className="text-center text-red-500 mb-4">{error}</p>}
-
-      {/* Submit Button */}
-      <div className="flex justify-center mt-4">
-      <form onSubmit={handleSubmit}>
-          {/* Keep your existing form fields */}
-          <button 
-            type="submit" 
-            disabled={loading}
-            className={`mt-4 px-6 py-2 bg-blue-500 text-white rounded 
-              ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+        {/* Restaurant Selection */}
+        <div className="flex flex-col">
+          <label className="font-medium mb-2">
+            レストランを選択 (Select Restaurant)
+          </label>
+          <select
+            name="restaurant_id"
+            value={foodData.restaurant_id}
+            onChange={handleChange}
+            className="w-full mb-4 p-2 border rounded-lg"
           >
-            {loading ? 'Creating...' : '料理を作成する'}
-          </button>
-        </form>
-        {/* <button
-          type="submit"
-          onClick={handleSubmit}
-          className="px-4 py-2 bg-orange-400 text-white font-bold rounded-lg hover:bg-orange-700 shadow"
-        >
-          料理を作成する
-        </button> */}
+            <option value="">レストランを選択してください</option>
+            {restaurants.map((restaurant) => (
+              <option key={restaurant._id} value={restaurant._id}>
+                {restaurant.name}
+              </option>
+            ))}
+          </select>
+
+          <label className="font-medium mb-2">評価 (1-5)</label>
+          <select
+            name="rating"
+            value={foodData.rating}
+            onChange={handleChange}
+            className="w-full mb-4 p-2 border rounded-lg"
+          >
+            <option value="">評価を選択してください</option>
+            {Array.from({ length: 9 }, (_, index) => {
+              const value = (index + 2) / 2; // 1.0, 1.5, ..., 5.0
+              return (
+                <option key={value} value={value}>
+                  {value.toFixed(1)}
+                </option>
+              );
+            })}
+          </select>
+          <label className="font-medium mb-2">ダイエットタイプ</label>
+          <select
+            name="diet_type"
+            value={foodData.diet_type}
+            onChange={handleChange}
+            className="w-full mb-4 p-2 border rounded-lg"
+          >
+            <option value="">ダイエットタイプを選択してください</option>
+            <option value="vegan">ビーガン</option>
+            <option value="keto">ケト</option>
+            <option value="vegetarian">ベジタリアン</option>
+            <option value="other">その他</option>
+            <option value="no">指定なし</option>
+          </select>
+          {/* Error Display */}
+          {error && <p className="text-center text-red-500 mb-2">{error}</p>}
+          <div className="flex justify-center mt-4">
+            <form onSubmit={handleSubmit}>
+              {/* Keep your existing form fields */}
+              <button
+                type="submit"
+                disabled={loading}
+                className={`mt-2 px-6 py-2 bg-orange-400 text-white rounded
+              ${
+                loading
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-orange-700"
+              }`}
+              >
+                {loading ? "Creating..." : "料理を作成する"}
+              </button>
+            </form>
+          </div>
+        </div>
+        {/* Bottom Right: Diet Type, Prep Time, Rating, Price */}
+        <div className="flex flex-col"></div>
       </div>
     </div>
   );

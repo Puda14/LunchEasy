@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import DishItem from "../../components/DishItem";
-import { fetchFavorites, removeFavorite } from '../../services/favoriteService';
-import {jwtDecode} from 'jwt-decode';
+import { fetchFavorites, removeFavorite } from "../../services/favoriteService";
+import { jwtDecode } from "jwt-decode";
 const Favorite = () => {
   const [dishes, setDishes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,20 +15,21 @@ const Favorite = () => {
   const loadFavorites = async () => {
     try {
       setLoading(true);
-      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      const token =
+        localStorage.getItem("token") || sessionStorage.getItem("token");
       var userId = "";
       if (token) {
         const decodedToken = jwtDecode(token);
         userId = decodedToken?.id;
       }
       if (!userId) {
-        throw new Error('User ID is missing');
-      }        
+        throw new Error("User ID is missing");
+      }
       const favoriteDishes = await fetchFavorites(userId);
-      console.log('Favorite Dishes:', favoriteDishes);
+      console.log("Favorite Dishes:", favoriteDishes);
       setDishes(favoriteDishes);
     } catch (err) {
-      setError('Failed to load favorites');
+      setError("Failed to load favorites");
       console.error(err);
     } finally {
       setLoading(false);
@@ -36,20 +37,21 @@ const Favorite = () => {
   };
   const removeDish = async (dishId) => {
     try {
-      const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+      const token =
+        localStorage.getItem("token") || sessionStorage.getItem("token");
       var userId = "";
       if (token) {
         const decodedToken = jwtDecode(token);
         userId = decodedToken?.id;
       }
       if (!userId) {
-        throw new Error('User ID is missing');
-      }        
-      console.log('Removing Favorite:', { userId, dishId });
+        throw new Error("User ID is missing");
+      }
+      console.log("Removing Favorite:", { userId, dishId });
       await removeFavorite(userId, dishId);
-      setDishes(dishes.filter(dish => dish._id !== dishId));
+      setDishes(dishes.filter((dish) => dish._id !== dishId));
     } catch (err) {
-      console.error('Error removing dish:', err);
+      console.error("Error removing dish:", err);
     }
   };
   const totalPages = Math.ceil(dishes.length / itemsPerPage);
@@ -87,7 +89,7 @@ const Favorite = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center items-center gap-2 mt-3">
+        <div className="flex justify-center items-center gap-2 mt-5">
           <button
             onClick={() => handlePageChange(currentPage - 1)}
             disabled={currentPage === 1}
