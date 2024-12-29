@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaArrowUp, FaArrowDown, FaTrash } from "react-icons/fa";
 import initialData from "../../../data/users.json";
 import { useEffect } from "react";
-import { getUsers,getUserById } from "../../../services/adminService";
+import { getUsers, getUserById } from "../../../services/adminService";
 
 const AdminUserManage = () => {
   const [users, setUsers] = useState([]);
@@ -22,7 +22,7 @@ const AdminUserManage = () => {
       console.error(err);
     }
   };
-  
+
   const handleSort = (key) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
@@ -165,7 +165,7 @@ const AdminUserManage = () => {
               >
                 <td className="p-2">
                   <img
-                    src={user.avatar}
+                    src="/meal/user.png"
                     alt={user.username}
                     className="object-cover w-16 h-16 rounded-md"
                   />
