@@ -81,7 +81,7 @@ const CreateFood = () => {
       await createDish(foodData);
       navigate("/admin/food-management"); // Navigate back to food list
     } catch (err) {
-      setError(err.message || "Failed to create food");
+      setError(err.message || "食べ物の作成に失敗しました");
     } finally {
       setLoading(false);
     }
@@ -234,31 +234,28 @@ const CreateFood = () => {
             <option value="other">その他</option>
             <option value="no">指定なし</option>
           </select>
-        </div>
-        {/* Bottom Right: Diet Type, Prep Time, Rating, Price */}
-        <div className="flex flex-col"></div>
-      </div>
-
-      {/* Error Display */}
-      {error && <p className="text-center text-red-500 mb-4">{error}</p>}
-
-      {/* Submit Button */}
-      <div className="flex justify-center mt-4">
-        <form onSubmit={handleSubmit}>
-          {/* Keep your existing form fields */}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`mt-2 px-6 py-2 bg-orange-400 text-white rounded
+          {/* Error Display */}
+          {error && <p className="text-center text-red-500 mb-2">{error}</p>}
+          <div className="flex justify-center mt-4">
+            <form onSubmit={handleSubmit}>
+              {/* Keep your existing form fields */}
+              <button
+                type="submit"
+                disabled={loading}
+                className={`mt-2 px-6 py-2 bg-orange-400 text-white rounded
               ${
                 loading
                   ? "opacity-50 cursor-not-allowed"
                   : "hover:bg-orange-700"
               }`}
-          >
-            {loading ? "Creating..." : "料理を作成する"}
-          </button>
-        </form>
+              >
+                {loading ? "Creating..." : "料理を作成する"}
+              </button>
+            </form>
+          </div>
+        </div>
+        {/* Bottom Right: Diet Type, Prep Time, Rating, Price */}
+        <div className="flex flex-col"></div>
       </div>
     </div>
   );
