@@ -81,7 +81,7 @@ const CreateFood = () => {
       await createDish(foodData);
       navigate("/admin/food-management"); // Navigate back to food list
     } catch (err) {
-      setError(err.message || "食べ物の作成に失敗しました");
+      setError("料理の作成に失敗しました");
     } finally {
       setLoading(false);
     }
