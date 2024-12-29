@@ -5,7 +5,6 @@ import { createDish } from "../../../../services/adminService";
 import { getRestaurants } from "../../../../services/adminService";
 import { uploadImageToCloudinary } from "../../../../services/uploadService";
 
-
 const CreateFood = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
@@ -24,19 +23,19 @@ const CreateFood = () => {
   });
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState("");
-    // Fetch danh sách nhà hàng khi component mount
-    useEffect(() => {
-      const loadRestaurants = async () => {
-        try {
-          const data = await getRestaurants();
-          setRestaurants(data);
-        } catch (err) {
-          console.error("Failed to fetch restaurants:", err);
-        }
-      };
-  
-      loadRestaurants();
-    }, []);
+  // Fetch danh sách nhà hàng khi component mount
+  useEffect(() => {
+    const loadRestaurants = async () => {
+      try {
+        const data = await getRestaurants();
+        setRestaurants(data);
+      } catch (err) {
+        console.error("Failed to fetch restaurants:", err);
+      }
+    };
+
+    loadRestaurants();
+  }, []);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFoodData((prev) => ({
@@ -51,26 +50,26 @@ const CreateFood = () => {
       setFoodData((prev) => ({
         ...prev,
         images: [],
-    }));
-    return;
+      }));
+      return;
+    }
+    try {
+      setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
+
+      const imageUrl = await uploadImageToCloudinary(file);
+
+      setFoodData((prev) => ({
+        ...prev,
+        images: [imageUrl],
+      }));
+      console.log("Food images:", foodData.images);
+    } catch (error) {
+      console.error("Image upload failed:", error.message);
+      setError("画像のアップロードに失敗しました。");
+    } finally {
+      setLoading(false); // Tắt trạng thái loading
+    }
   };
-      try {
-        setLoading(true); // Hiển thị trạng thái loading khi upload ảnh
-    
-        const imageUrl = await uploadImageToCloudinary(file);
-    
-        setFoodData((prev) => ({
-          ...prev,
-          images: [imageUrl],
-        }));
-        console.log("Food images:", foodData.images);
-      } catch (error) {
-        console.error('Image upload failed:', error.message);
-        setError('画像のアップロードに失敗しました。');
-      } finally {
-        setLoading(false); // Tắt trạng thái loading
-      }
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -87,7 +86,7 @@ const CreateFood = () => {
       setLoading(false);
     }
   };
-  
+
   return (
     <div className="relative flex flex-col w-full h-full p-5">
       {/* Back Button */}
@@ -186,7 +185,9 @@ const CreateFood = () => {
         </div>
         {/* Restaurant Selection */}
         <div className="flex flex-col">
-          <label className="font-medium mb-2">レストランを選択 (Select Restaurant)</label>
+          <label className="font-medium mb-2">
+            レストランを選択 (Select Restaurant)
+          </label>
           <select
             name="restaurant_id"
             value={foodData.restaurant_id}
@@ -243,15 +244,19 @@ const CreateFood = () => {
 
       {/* Submit Button */}
       <div className="flex justify-center mt-4">
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           {/* Keep your existing form fields */}
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             disabled={loading}
-            className={`mt-4 px-6 py-2 bg-blue-500 text-white rounded 
-              ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
+            className={`mt-4 px-6 py-2 bg-orange-400 text-white rounded
+              ${
+                loading
+                  ? "opacity-50 cursor-not-allowed"
+                  : "hover:bg-orange-700"
+              }`}
           >
-            {loading ? 'Creating...' : '料理を作成する'}
+            {loading ? "Creating..." : "料理を作成する"}
           </button>
         </form>
         {/* <button
