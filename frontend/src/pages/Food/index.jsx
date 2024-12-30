@@ -96,7 +96,7 @@ const Food = () => {
   return (
     <div className="relative flex flex-col w-full h-full">
       <div className="absolute w-10 h-auto top-5 left-5">
-        <BackButton dest={-1} />
+        <BackButton />
       </div>
       <div className="w-4/5 mx-auto">
         {/* Ảnh và 材料 */}
@@ -114,8 +114,8 @@ const Food = () => {
           </div>
 
           {/* 材料 */}
-          <div className="ml-10 flex-grow text-xl">
-            <p className="font-semibold mb-2">材料</p>
+          <div className="flex-grow ml-10 text-xl">
+            <p className="mb-2 font-semibold">材料</p>
             <div>
               {ingredients.map((item, index) => (
                 <p key={index}>{item}</p>
@@ -128,7 +128,7 @@ const Food = () => {
         <div className="grid grid-cols-2 gap-10">
           {informationList.map((info, index) => (
             <div key={index} className="flex flex-row text-xl">
-              <p className="font-semibold mr-8">{info.label}</p>
+              <p className="mr-8 font-semibold">{info.label}</p>
               {typeof info.text === "object" ? info.text : <p>{info.text}</p>}
             </div>
           ))}
