@@ -42,16 +42,16 @@ const Restaurant = () => {
     <div className="relative flex flex-col w-full h-full p-5">
       {/* Back Button */}
       <div className="absolute w-10 top-5 left-5">
-        <BackButton dest="/restaurants" />
+        <BackButton />
       </div>
       {/* Restaurant Information */}
       <div className="flex flex-col w-full">
-        <h1 className="text-3xl font-bold text-center mb-4">
+        <h1 className="mb-4 text-3xl font-bold text-center">
           {restaurant.name}
         </h1>
         <div className="flex flex-row">
           {/* Left: Image and Address */}
-          <div className="w-1/2 flex flex-col items-center">
+          <div className="flex flex-col items-center w-1/2">
             <img
               src={restaurant.images[0]}
               alt={restaurant.name}
@@ -60,7 +60,7 @@ const Restaurant = () => {
           </div>
 
           {/* Right: Details */}
-          <div className="w-1/2 flex flex-col px-3">
+          <div className="flex flex-col w-1/2 px-3">
             <div className="text-lg">
               <p>
                 <span className="font-bold">評価:</span> {restaurant.rating}/5
