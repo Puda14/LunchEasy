@@ -28,7 +28,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 //mogodb connection
-const MONGO_URI = 'mongodb://admin:admin123@mongo:27017/magi?authSource=admin' || process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI;
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connected to MongoDB'))

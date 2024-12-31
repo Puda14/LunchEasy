@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs');
 const Dish = require('./models/Dish');
 const Restaurant = require('./models/Restaurant');
 const User = require('./models/User');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+
+uri = 'mongodb+srv://lequangminh03:123456magi@luncheasy.uw6aj.mongodb.net/magi?retryWrites=true&w=majority&appName=luncheasy';
 
 mongoose
-  .connect('mongodb://admin:admin123@mongodb:27017/magi?authSource=admin', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(uri)
   .then(() => console.log('MongoDB connected'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
