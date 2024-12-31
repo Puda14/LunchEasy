@@ -9,7 +9,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: 'http://localhost:5000', // URL server
+      url: 'https://luncheasy.onrender.com', // URL server
       description: 'Development server',
     },
   ],
