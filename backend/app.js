@@ -17,7 +17,7 @@ const uploadRoutes = require('./routes/upload'); // Đường dẫn tới file u
 const app = express();
 // CORS configuration
 const corsOptions = {
-  origin: ['http://localhost:3000', 'http://localhost:5173'], // Frontend URLs
+  origin: ['http://localhost:3000', 'http://localhost:5173','https://lunch-easy.vercel.app'], // Frontend URLs
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true,
