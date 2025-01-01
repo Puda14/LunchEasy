@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://luncheasy.onrender.com';
 
 export const fetchRestaurants = async () => {
   try {

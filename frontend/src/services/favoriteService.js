@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://luncheasy.onrender.com';
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -67,12 +67,12 @@ export const removeFavorite = async (userId, dishId) => {
         headers: getAuthHeaders(),
         body: JSON.stringify({ userId, dishId }),
       });
-      
+
       if (!response.ok) {
         const error = await response.json();
         throw new Error(error.message);
       }
-  
+
       return await response.json();
     } catch (error) {
       console.error('Error removing favorite:', error);

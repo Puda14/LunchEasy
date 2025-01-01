@@ -1,5 +1,5 @@
 // src/services/authService.js
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://luncheasy.onrender.com';
 
 export const login = async (email, password) => {
   const response = await fetch(`${API_URL}/auth/login`, {
@@ -14,7 +14,7 @@ export const login = async (email, password) => {
   if (!response.ok) {
     throw new Error(data.message || 'Login failed');
   }
-  
+
   return data;
 };
 
@@ -26,7 +26,7 @@ export const signup = async (email, password, dob) => {
       },
       body: JSON.stringify({ email, password, dob }),
     });
-  
+
     const data = await response.json();
     if (!response.ok) {
       throw new Error(data.message || 'Signup failed');

@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://luncheasy.onrender.com';
 
 export async function fetchHistory(userId) {
     try {
@@ -13,11 +13,11 @@ export async function fetchHistory(userId) {
           'Content-Type': 'application/json',
         },
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to fetch history');
       }
-  
+
       const historyData = await response.json();
 
       // Chuyển dữ liệu history thành danh sách dishes
@@ -33,14 +33,14 @@ export async function fetchHistory(userId) {
         viewedAt: item.viewed_at,
         description: item.dish_id.description || '',
       }));
-  
+
       return dishes;
     } catch (error) {
       console.error('Error fetching history:', error);
       throw error;
     }
   }
-  
+
 export async function addToHistory(userId, dishId) {
 try {
     var token = localStorage.getItem('token') || sessionStorage.getItem('token');

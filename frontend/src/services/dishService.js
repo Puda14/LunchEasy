@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+const API_URL = 'https://luncheasy.onrender.com';
 
 export const fetchDishes = async () => {
   try {
@@ -157,7 +157,7 @@ export const fetchSuggestionDishes = async (params = {}) => {
     }
 
     const data = await response.json();
-    
+
     // Transform data to match frontend format
     const dishes = data.map(item => ({
       _id: item._id,
